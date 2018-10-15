@@ -28,7 +28,13 @@ app.get('/', (req, res) => {
     GET /categories
       USAGE:
         Get all of the categories available for the app. List is found in categories.js.
-        Feel free to extend this list as you desire.
+
+    POST /categories
+        USAGE:
+            Add a new category
+
+        PARAMS:
+            category: an object contains name and path. name and path are identical
 
     GET /:category/posts
       USAGE:

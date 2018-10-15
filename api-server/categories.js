@@ -36,6 +36,17 @@ function getAll (token) {
   })
 }
 
+function add (token, category) {
+  return new Promise((res) => {
+    let categories = getData(token)
+
+    categories.concat([category])
+
+    res(category)
+  })
+}
+
 module.exports = {
-  getAll
+  getAll,
+  add
 }

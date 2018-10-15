@@ -141,6 +141,19 @@ app.get('/categories', (req, res) => {
       )
 })
 
+app.post('/categories', bodyParser.json(), (req, res) => {
+    categories.add(req.token, req.body)
+        .then(
+            (data) => res.send(data),
+            (error) => {
+                console.error(error)
+                res.status(500).send({
+                    error: 'There was an error'
+                })
+            }
+        )
+})
+
 app.get('/:category/posts', (req, res) => {
     posts.getByCategory(req.token, req.params.category)
       .then(

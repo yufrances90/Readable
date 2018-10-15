@@ -1,4 +1,4 @@
-export default interface Comment {
+export default interface IComment {
     id: string, //  Unique identifier
     parentId: string,   //  id of the parent post
     timestamp: number,  //  Time created

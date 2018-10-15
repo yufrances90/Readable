@@ -1,4 +1,4 @@
-export default interface Post {
+export default interface IPost {
     id: string, //  Unique identifier
     timestamp: number,  //  Time created
     title: string,  //  Post title

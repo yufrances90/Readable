@@ -1,5 +1,6 @@
 import * as constants from '../constants/comments';
 import IComment from '../interfaces/IComment';
+import { DeletePostByID } from './posts';
 
 export interface GetCommentsByPostID {
     type: constants.GET_COMMENTS_BY_POST_ID;
@@ -14,12 +15,13 @@ export interface AddNewComment {
 
 export interface ViewCommentDetailsByID {
     type: constants.VIEW_COMMENT_DETAILS_BY_ID;
-    comment: IComment;
+    id: string;
 }
 
 export interface VoteCommentByID {
     type: constants.VOTE_COMMENT_BY_ID;
-    comment: IComment;
+    id: string;
+    option: string;
 }
 
 export interface EditCommentDetailsByID {
@@ -29,7 +31,7 @@ export interface EditCommentDetailsByID {
 
 export interface DeleteCommentByID {
     type: constants.DELETE_COMMENT_BY_ID;
-    comment: IComment;
+    id: string;
 }
 
 export type CommentAction = 
@@ -38,7 +40,8 @@ export type CommentAction =
     ViewCommentDetailsByID |
     VoteCommentByID |
     EditCommentDetailsByID |
-    DeleteCommentByID;
+    DeleteCommentByID |
+    DeletePostByID;
 
 export function GetCommentsByPostID(
     postID: string, 
@@ -58,17 +61,18 @@ export function AddNewComment(comment: IComment): AddNewComment {
     };
 }
 
-export function ViewCommentDetailsByID(comment: IComment): ViewCommentDetailsByID {
+export function ViewCommentDetailsByID(id: string): ViewCommentDetailsByID {
     return {
         type: constants.VIEW_COMMENT_DETAILS_BY_ID,
-        comment
+        id
     };
 }
 
-export function VoteCommentByID(comment: IComment): VoteCommentByID {
+export function VoteCommentByID(id: string, option: string): VoteCommentByID {
     return {
         type: constants.VOTE_COMMENT_BY_ID,
-        comment
+        id,
+        option
     };
 }
 
@@ -79,9 +83,9 @@ export function EditCommentDetailsByID(comment: IComment): EditCommentDetailsByI
     };
 }
 
-export function DeleteCommentByID(comment: IComment): DeleteCommentByID {
+export function DeleteCommentByID(id: string): DeleteCommentByID {
     return {
         type: constants.DELETE_COMMENT_BY_ID,
-        comment
+        id
     };
 }

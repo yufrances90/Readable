@@ -19,12 +19,13 @@ export interface AddNewPost {
 
 export interface ViewPostDetailsByID {
     type: constants.VIEW_POST_DETAILS_BY_ID;
-    post: IPost
+    id: string
 }
 
 export interface VotePostByID {
     type: constants.VOTE_POST_BY_ID;
-    post: IPost
+    id: string;
+    option: string;
 }
 
 export interface EditPostDetailsByID {
@@ -34,7 +35,7 @@ export interface EditPostDetailsByID {
 
 export interface DeletePostByID {
     type: constants.DELETE_POST_BY_ID;
-    post: IPost
+    id: string;
 }
 
 export type PostAction =
@@ -68,17 +69,18 @@ export function AddNewPost(post: IPost): AddNewPost {
     };
 }
 
-export function ViewPostDetailsByID(post: IPost): ViewPostDetailsByID {
+export function ViewPostDetailsByID(id: string): ViewPostDetailsByID {
     return {
         type: constants.VIEW_POST_DETAILS_BY_ID,
-        post
+        id
     };
 }
 
-export function VotePostByID(post: IPost): VotePostByID {
+export function VotePostByID(id: string, option: string): VotePostByID {
     return {
         type: constants.VOTE_POST_BY_ID,
-        post
+        id,
+        option
     };
 }
 
@@ -89,9 +91,9 @@ export function EditPostDetailsByID(post: IPost): EditPostDetailsByID {
     };
 }
 
-export function DeletePostByID(post: IPost): DeletePostByID {
+export function DeletePostByID(id: string): DeletePostByID {
     return {
         type: constants.DELETE_POST_BY_ID,
-        post
+        id
     };
 }

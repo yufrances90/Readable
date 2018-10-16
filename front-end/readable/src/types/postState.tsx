@@ -1,3 +1,3 @@
 export interface PostState {
-    posts: object;
+    readonly posts: object;
 }

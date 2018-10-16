@@ -11,7 +11,11 @@ import {
 import { DELETE_POST_BY_ID } from '../constants/posts';
 import IComment from '../interfaces/IComment';
 
-export default function comments(state: CommentState, action: CommentAction) {
+const initialState: CommentState = {
+    comments: {}
+}
+
+export default function comments(state: CommentState = initialState, action: CommentAction) {
     switch(action.type) {
         case GET_COMMENTS_BY_POST_ID:
 

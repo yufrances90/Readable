@@ -1,51 +1,50 @@
 import { CommentActionTypes } from '../constants/comments';
 import IComment from '../interfaces/IComment';
-import { DeletePostByID } from './posts';
+import { IDeletePostByID } from './posts';
 
-export interface GetCommentsByPostID {
+export interface IGetCommentsByPostID {
     type: CommentActionTypes.GET_COMMENTS_BY_POST_ID;
     postID: string;
-    comments: Array<IComment>;
+    comments: IComment[];
 }
 
-export interface AddNewComment {
+export interface IAddNewComment {
     type: CommentActionTypes.ADD_NEW_COMMENT;
     comment: IComment;
 }
 
-export interface ViewCommentDetailsByID {
+export interface IViewCommentDetailsByID {
     type: CommentActionTypes.VIEW_COMMENT_DETAILS_BY_ID;
     id: string;
 }
 
-export interface VoteCommentByID {
+export interface IVoteCommentByID {
     type: CommentActionTypes.VOTE_COMMENT_BY_ID;
     id: string;
     option: string;
 }
 
-export interface EditCommentDetailsByID {
+export interface IEditCommentDetailsByID {
     type: CommentActionTypes.EDIT_COMMENT_DETAILS_BY_ID;
     comment: IComment;
 }
 
-export interface DeleteCommentByID {
+export interface IDeleteCommentByID {
     type: CommentActionTypes.DELETE_COMMENT_BY_ID;
     id: string;
 }
 
 export type CommentAction = 
-    GetCommentsByPostID |
-    AddNewComment |
-    ViewCommentDetailsByID |
-    VoteCommentByID |
-    EditCommentDetailsByID |
-    DeleteCommentByID |
-    DeletePostByID;
+    IGetCommentsByPostID |
+    IAddNewComment |
+    IViewCommentDetailsByID |
+    IVoteCommentByID |
+    IEditCommentDetailsByID |
+    IDeleteCommentByID |
+    IDeletePostByID;
 
 export function GetCommentsByPostID(
-    postID: string, 
-    comments: Array<IComment>): GetCommentsByPostID {
+    postID: string, comments: IComment[]): IGetCommentsByPostID {
 
     return {
         type: CommentActionTypes.GET_COMMENTS_BY_POST_ID,
@@ -54,21 +53,21 @@ export function GetCommentsByPostID(
     };
 }
 
-export function AddNewComment(comment: IComment): AddNewComment {
+export function AddNewComment(comment: IComment): IAddNewComment {
     return {
         type: CommentActionTypes.ADD_NEW_COMMENT,
         comment
     };
 }
 
-export function ViewCommentDetailsByID(id: string): ViewCommentDetailsByID {
+export function ViewCommentDetailsByID(id: string): IViewCommentDetailsByID {
     return {
         type: CommentActionTypes.VIEW_COMMENT_DETAILS_BY_ID,
         id
     };
 }
 
-export function VoteCommentByID(id: string, option: string): VoteCommentByID {
+export function VoteCommentByID(id: string, option: string): IVoteCommentByID {
     return {
         type: CommentActionTypes.VOTE_COMMENT_BY_ID,
         id,
@@ -76,14 +75,14 @@ export function VoteCommentByID(id: string, option: string): VoteCommentByID {
     };
 }
 
-export function EditCommentDetailsByID(comment: IComment): EditCommentDetailsByID {
+export function EditCommentDetailsByID(comment: IComment): IEditCommentDetailsByID {
     return {
         type: CommentActionTypes.EDIT_COMMENT_DETAILS_BY_ID,
         comment
     };
 }
 
-export function DeleteCommentByID(id: string): DeleteCommentByID {
+export function DeleteCommentByID(id: string): IDeleteCommentByID {
     return {
         type: CommentActionTypes.DELETE_COMMENT_BY_ID,
         id

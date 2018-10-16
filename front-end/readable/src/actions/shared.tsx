@@ -1,19 +1,20 @@
 import { RECEIVE_DATA } from '../constants/shared';
 import ICategory from '../interfaces/ICategory';
 
-export interface ReceiveData {
+export interface IReceiveData {
     type: RECEIVE_DATA;
-    categories: Array<ICategory>;
+    categories: ICategory[];
     posts: object;
     comments: object;
 }
 
-export type SharedAction = ReceiveData;
+export type SharedAction = IReceiveData;
 
 export function ReceiveData(
-    categories: Array<ICategory>, 
-    posts: object,
-    comments: object): ReceiveData {
+    categories: ICategory[], 
+    posts: object, 
+    comments: object
+): IReceiveData {
 
     return {
         type: RECEIVE_DATA,

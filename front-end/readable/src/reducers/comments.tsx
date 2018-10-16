@@ -1,18 +1,18 @@
 import { CommentAction } from '../actions/comments';
-import { CommentState } from '../types/commentState';
+import { ICommentState } from '../types/commentState';
 import { CommentActionTypes } from '../constants/comments';
 import { PostActionTypes } from '../constants/posts';
 import IComment from '../interfaces/IComment';
 
-const initialState: CommentState = {
+const initialState: ICommentState = {
     comments: {}
 }
 
-export default function comments(state: CommentState = initialState, action: CommentAction) {
+export default function comments(state: ICommentState = initialState, action: CommentAction) {
     switch(action.type) {
         case CommentActionTypes.GET_COMMENTS_BY_POST_ID:
 
-            var filteredComments: object = {};
+            const filteredComments: object = {};
 
             Object.keys(state.comments).forEach(id => {
                 if (state.comments[id].parentId === action.postID) {
@@ -60,11 +60,11 @@ export default function comments(state: CommentState = initialState, action: Com
             }
         case PostActionTypes.DELETE_POST_BY_ID:
 
-            var updatedComments: object = {};
+            const updatedComments: object = {};
             
             return Object.keys(state.comments).forEach(id => {
 
-                var comment:IComment = state.comments[id];
+                const comment:IComment = state.comments[id];
 
                 const newComment: IComment = (comment.parentId === action.id)? 
                 {

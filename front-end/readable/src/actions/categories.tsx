@@ -1,26 +1,26 @@
 import { CategoryActionTypes } from '../constants/categories';
 import ICategory from '../interfaces/ICategory';
 
-export interface GetAllCategories {
+export interface IGetAllCategories {
     type: CategoryActionTypes.GET_ALL_CATEGORIES
-    categories: Array<ICategory>;
+    categories: ICategory[];
 }
 
-export interface AddNewCategory {
+export interface IAddNewCategory {
     type: CategoryActionTypes.ADD_NEW_CATEGORY
     category: ICategory
 }
 
-export type CategoryAction = GetAllCategories | AddNewCategory;
+export type CategoryAction = IGetAllCategories | IAddNewCategory;
 
-export function GetAllCategories(categories: Array<ICategory>): GetAllCategories {
+export function GetAllCategories(categories: ICategory[]): IGetAllCategories {
     return {
         type: CategoryActionTypes.GET_ALL_CATEGORIES,
         categories
     };
 }
 
-export function AddNewCategory(category: ICategory): AddNewCategory {
+export function AddNewCategory(category: ICategory): IAddNewCategory {
     return {
         type: CategoryActionTypes.ADD_NEW_CATEGORY,
         category

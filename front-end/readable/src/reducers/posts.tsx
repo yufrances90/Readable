@@ -1,16 +1,16 @@
 import { PostAction } from '../actions/posts';
-import { PostState } from '../types/postState';
+import { IPostState } from '../types/postState';
 import { PostActionTypes } from '../constants/posts';
 
-const initialState: PostState = {
+const initialState: IPostState = {
     posts: {}
 }
 
-export default function posts(state: PostState = initialState, action: PostAction) {
+export default function posts(state: IPostState = initialState, action: PostAction) {
     switch(action.type) {
         case PostActionTypes.GET_POSTS_BY_CATEGORY:
 
-            var filteredPosts: object = {};
+            const filteredPosts: object = {};
 
             Object.keys(state.posts).forEach(id => {
 

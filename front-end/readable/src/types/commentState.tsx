@@ -1,3 +1,3 @@
-export interface CommentState {
+export interface ICommentState {
     readonly comments: object;
 }

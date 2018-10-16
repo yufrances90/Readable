@@ -1,5 +1,4 @@
-export const GET_ALL_CATEGORIES = "GET_ALL_CATEGORIES";
-export type GET_ALL_CATEGORIES = typeof GET_ALL_CATEGORIES;
-
-export const ADD_NEW_CATEGORY = "ADD_NEW_CATEGORY";
-export type ADD_NEW_CATEGORY = typeof ADD_NEW_CATEGORY;
+export const enum CategoryActionTypes {
+    GET_ALL_CATEGORIES = "@@category/GET_ALL_CATEGORIES",
+    ADD_NEW_CATEGORY = "@@category/ADD_NEW_CATEGORY",
+}

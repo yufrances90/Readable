@@ -1,20 +1,9 @@
-export const GET_POSTS_BY_CATEGORY = "GET_POSTS_BY_CATEGORY";
-export type GET_POSTS_BY_CATEGORY = typeof GET_POSTS_BY_CATEGORY;
-
-export const GET_ALL_POSTS = "GET_ALL_POSTS";
-export type GET_ALL_POSTS = typeof GET_ALL_POSTS;
-
-export const ADD_NEW_POST = "ADD_NEW_POST";
-export type ADD_NEW_POST = typeof ADD_NEW_POST;
-
-export const VIEW_POST_DETAILS_BY_ID = "VIEW_POST_DETAILS_BY_ID";
-export type VIEW_POST_DETAILS_BY_ID = typeof VIEW_POST_DETAILS_BY_ID;
-
-export const VOTE_POST_BY_ID = "VOTE_POST_BY_ID";
-export type VOTE_POST_BY_ID = typeof VOTE_POST_BY_ID;
-
-export const EDIT_POST_DETAILS_BY_ID = "EDIT_POST_DETAILS_BY_ID";
-export type EDIT_POST_DETAILS_BY_ID = typeof EDIT_POST_DETAILS_BY_ID;
-
-export const DELETE_POST_BY_ID = "DELETE_POST_BY_ID";
-export type DELETE_POST_BY_ID = typeof DELETE_POST_BY_ID;
+export const enum PostActionTypes {
+    GET_POSTS_BY_CATEGORY = "@@post/GET_POSTS_BY_CATEGORY",
+    GET_ALL_POSTS = "@@post/GET_ALL_POSTS",
+    ADD_NEW_POST = "@@post/ADD_NEW_POST",
+    VIEW_POST_DETAILS_BY_ID = "@@post/VIEW_POST_DETAILS_BY_ID",
+    VOTE_POST_BY_ID = "V@@post/OTE_POST_BY_ID",
+    EDIT_POST_DETAILS_BY_ID = "@@post/EDIT_POST_DETAILS_BY_ID",
+    DELETE_POST_BY_ID = "@@post/DELETE_POST_BY_ID"
+}

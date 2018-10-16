@@ -1,14 +1,7 @@
 import { CommentAction } from '../actions/comments';
 import { CommentState } from '../types/commentState';
-import {
-    GET_COMMENTS_BY_POST_ID,
-    ADD_NEW_COMMENT,
-    VIEW_COMMENT_DETAILS_BY_ID,
-    VOTE_COMMENT_BY_ID,
-    EDIT_COMMENT_DETAILS_BY_ID,
-    DELETE_COMMENT_BY_ID
-} from '../constants/comments';
-import { DELETE_POST_BY_ID } from '../constants/posts';
+import { CommentActionTypes } from '../constants/comments';
+import { PostActionTypes } from '../constants/posts';
 import IComment from '../interfaces/IComment';
 
 const initialState: CommentState = {
@@ -17,7 +10,7 @@ const initialState: CommentState = {
 
 export default function comments(state: CommentState = initialState, action: CommentAction) {
     switch(action.type) {
-        case GET_COMMENTS_BY_POST_ID:
+        case CommentActionTypes.GET_COMMENTS_BY_POST_ID:
 
             var filteredComments: object = {};
 
@@ -28,16 +21,16 @@ export default function comments(state: CommentState = initialState, action: Com
             });
 
             return filteredComments;
-        case ADD_NEW_COMMENT:
+        case CommentActionTypes.ADD_NEW_COMMENT:
             return {
                 comments: {
                     ...state.comments,
                     [action.comment.id]: action.comment
                 }
             };
-        case VIEW_COMMENT_DETAILS_BY_ID:
+        case CommentActionTypes.VIEW_COMMENT_DETAILS_BY_ID:
             return state.comments[action.id];
-        case VOTE_COMMENT_BY_ID:
+        case CommentActionTypes.VOTE_COMMENT_BY_ID:
             return {
                 comments: {
                     ...state.comments,
@@ -48,14 +41,14 @@ export default function comments(state: CommentState = initialState, action: Com
                     }
                 }
             }
-        case EDIT_COMMENT_DETAILS_BY_ID:
+        case CommentActionTypes.EDIT_COMMENT_DETAILS_BY_ID:
             return {
                 comments: {
                     ...state.comments,
                     [action.comment.id]: action.comment
                 }
             };
-        case DELETE_COMMENT_BY_ID:
+        case CommentActionTypes.DELETE_COMMENT_BY_ID:
             return {
                 comments: {
                     ...state.comments,
@@ -65,7 +58,7 @@ export default function comments(state: CommentState = initialState, action: Com
                     }
                 }
             }
-        case DELETE_POST_BY_ID:
+        case PostActionTypes.DELETE_POST_BY_ID:
 
             var updatedComments: object = {};
             

@@ -10,7 +10,7 @@ import {
     DELETE_POST_BY_ID
 } from '../constants/posts';
 
-export function posts(state: PostState, action: PostAction) {
+export default function posts(state: PostState, action: PostAction) {
     switch(action.type) {
         case GET_POSTS_BY_CATEGORY:
 

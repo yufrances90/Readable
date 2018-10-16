@@ -5,7 +5,7 @@ import { GET_ALL_CATEGORIES, ADD_NEW_CATEGORY } from '../constants/categories';
 export function categories(state: CategoryState, action: CategoryAction) {
     switch(action.type) {
         case GET_ALL_CATEGORIES:
-            return state.categories;
+            return action.categories;
         case ADD_NEW_CATEGORY:
             return state.categories.concat([action.category]);
         default:

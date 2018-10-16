@@ -25,12 +25,7 @@ export function posts(state: PostState, action: PostAction) {
 
             return filteredPosts;
         case GET_ALL_POSTS:
-            return {
-                posts: {
-                    ...state.posts,
-                    ...action.posts
-                }
-            };
+            return action.posts;
         case ADD_NEW_POST:
             return {
                 posts: {

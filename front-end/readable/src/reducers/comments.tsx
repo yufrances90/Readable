@@ -14,12 +14,16 @@ import IComment from '../interfaces/IComment';
 export function comments(state: CommentState, action: CommentAction) {
     switch(action.type) {
         case GET_COMMENTS_BY_POST_ID:
-            return {
-               comments: {
-                   ...state.comments,
-                   ...action.comments
-               }
-            };
+
+            var filteredComments: object = {};
+
+            Object.keys(state.comments).forEach(id => {
+                if (state.comments[id].parentId === action.postID) {
+                    filteredComments[id] = state.comments[id];
+                }
+            });
+
+            return filteredComments;
         case ADD_NEW_COMMENT:
             return {
                 comments: {

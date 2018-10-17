@@ -3,7 +3,7 @@ import { api, headers } from './shared';
 export const getAll = () =>
     fetch(`${api}/categories`, { headers })
         .then(res => res.json())
-        .then(data => console.log(data.categories));
+        .then(data => data.categories);
 
 export const add = (category) =>
     fetch(`${api}/categories`, {
@@ -13,4 +13,4 @@ export const add = (category) =>
             'Content-Type': 'application/json'
         },
         body: JSON.stringify({ category })
-    }).then(res => console.log(res.json()))
+    }).then(res => res.json())

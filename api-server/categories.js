@@ -3,7 +3,7 @@ const config = require('./config')
 
 let db = {}
 
-const defaultData = {
+let defaultData = {
   categories: [
       {
         name: 'react',
@@ -19,6 +19,8 @@ const defaultData = {
       }
   ]
 }
+
+
 
 function getData (token) {
   //Each token has it's own copy of the DB. The token in this case is like an app id.
@@ -36,13 +38,16 @@ function getAll (token) {
   })
 }
 
-function add (token, category) {
+function add (token, body) {
   return new Promise((res) => {
-    let categories = getData(token)
 
-    categories.concat([category])
+    let data = getData(token)
 
-    res(category)
+    const categories = data.categories.concat([body.category]);
+
+    data["categories"] = categories;
+
+    res(body)
   })
 }
 

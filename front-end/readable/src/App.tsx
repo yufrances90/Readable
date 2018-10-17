@@ -1,21 +1,13 @@
 import * as React from 'react';
 import './App.css';
 
-import { add, getAll } from './api/categories';
-import ICategory from './interfaces/ICategory';
+import { deleteById } from './api/posts';
 
 class App extends React.Component {
 
     public componentDidMount() {
 
-        const category: ICategory = {
-            name: 'hello',
-            path: 'hello'
-        }
-
-        add(category).then(() => {
-            getAll();
-        });
+        deleteById("8xf0y6ziyjabvozdd253nd").then(data => console.log(data))
 
     }
 

@@ -22,10 +22,10 @@ export function createNewPost(
     return {
         id: generateUID(),
         timestamp: generateTimestamp(),
-        title: title,
-        body: body,
-        author: author,
-        category: category,
+        title,
+        body,
+        author,
+        category,
         voteScore: 1,
         commentCount: 0,
         deleted: false
@@ -39,10 +39,10 @@ export function createNewComment(
 ): IComment {
     return {
         id: generateUID(),
-        parentId: parentId,
+        parentId,
         timestamp: generateTimestamp(),
-        body: body,
-        author: author,
+        body,
+        author,
         voteScore: 1,
         deleted: false,
         parentDeleted: false

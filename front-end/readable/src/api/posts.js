@@ -49,7 +49,7 @@ export const edit = (postId, title, body) =>
     }).then(res => res.json());
     //  can only edit title and body
 
-export const deleteById = (postId, title, body) =>
+export const deleteById = (postId) =>
     fetch(`${api}/posts/${postId}`, {
         method: 'DELETE',
         headers

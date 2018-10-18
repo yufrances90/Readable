@@ -43,7 +43,7 @@ export type CommentAction =
     IDeleteCommentByID |
     IDeletePostByID;
 
-export function GetCommentsByPostID(
+export function getCommentsByPostID(
     postID: string, comments: IComment[]): IGetCommentsByPostID {
 
     return {
@@ -53,21 +53,21 @@ export function GetCommentsByPostID(
     };
 }
 
-export function AddNewComment(comment: IComment): IAddNewComment {
+export function addNewComment(comment: IComment): IAddNewComment {
     return {
         type: CommentActionTypes.ADD_NEW_COMMENT,
         comment
     };
 }
 
-export function ViewCommentDetailsByID(id: string): IViewCommentDetailsByID {
+export function viewCommentDetailsByID(id: string): IViewCommentDetailsByID {
     return {
         type: CommentActionTypes.VIEW_COMMENT_DETAILS_BY_ID,
         id
     };
 }
 
-export function VoteCommentByID(id: string, option: string): IVoteCommentByID {
+export function voteCommentByID(id: string, option: string): IVoteCommentByID {
     return {
         type: CommentActionTypes.VOTE_COMMENT_BY_ID,
         id,
@@ -75,14 +75,14 @@ export function VoteCommentByID(id: string, option: string): IVoteCommentByID {
     };
 }
 
-export function EditCommentDetailsByID(comment: IComment): IEditCommentDetailsByID {
+export function editCommentDetailsByID(comment: IComment): IEditCommentDetailsByID {
     return {
         type: CommentActionTypes.EDIT_COMMENT_DETAILS_BY_ID,
         comment
     };
 }
 
-export function DeleteCommentByID(id: string): IDeleteCommentByID {
+export function deleteCommentByID(id: string): IDeleteCommentByID {
     return {
         type: CommentActionTypes.DELETE_COMMENT_BY_ID,
         id

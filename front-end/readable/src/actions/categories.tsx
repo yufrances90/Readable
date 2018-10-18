@@ -13,14 +13,14 @@ export interface IAddNewCategory {
 
 export type CategoryAction = IGetAllCategories | IAddNewCategory;
 
-export function GetAllCategories(categories: ICategory[]): IGetAllCategories {
+export function getAllCategories(categories: ICategory[]): IGetAllCategories {
     return {
         type: CategoryActionTypes.GET_ALL_CATEGORIES,
         categories
     };
 }
 
-export function AddNewCategory(category: ICategory): IAddNewCategory {
+export function addNewCategory(category: ICategory): IAddNewCategory {
     return {
         type: CategoryActionTypes.ADD_NEW_CATEGORY,
         category

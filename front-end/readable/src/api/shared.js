@@ -1,3 +1,6 @@
+import { getAll as getAllCategories } from './categories';
+import { getAll as getAllPosts } from './posts';
+
 export const api = "http://localhost:3001";
 
 let token = localStorage.token;
@@ -10,3 +13,12 @@ export const headers = {
     'Authorization': token
 }
 
+export function getInitialData() {
+    return Promise.all([
+        getAllCategories(),
+        getAllPosts()
+    ]).then(([categories, posts]) => ({
+        categories,
+        posts
+    })) 
+}

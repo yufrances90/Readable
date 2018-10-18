@@ -47,7 +47,7 @@ export type PostAction =
     IEditPostDetailsByID |
     IDeletePostByID;
 
-export function GetPostsByCategory(category: string, posts: IPost[]): IGetPostsByCategory {
+export function getPostsByCategory(category: string, posts: IPost[]): IGetPostsByCategory {
     return {
         type: PostActionTypes.GET_POSTS_BY_CATEGORY,
         category,
@@ -55,28 +55,28 @@ export function GetPostsByCategory(category: string, posts: IPost[]): IGetPostsB
     };
 }
 
-export function GetAllPosts(posts: IPost[]): IGetAllPosts {
+export function getAllPosts(posts: IPost[]): IGetAllPosts {
     return {
         type: PostActionTypes.GET_ALL_POSTS,
         posts
     };
 }
 
-export function AddNewPost(post: IPost): IAddNewPost {
+export function addNewPost(post: IPost): IAddNewPost {
     return {
         type: PostActionTypes.ADD_NEW_POST,
         post
     };
 }
 
-export function ViewPostDetailsByID(id: string): IViewPostDetailsByID {
+export function viewPostDetailsByID(id: string): IViewPostDetailsByID {
     return {
         type: PostActionTypes.VIEW_POST_DETAILS_BY_ID,
         id
     };
 }
 
-export function VotePostByID(id: string, option: string): IVotePostByID {
+export function votePostByID(id: string, option: string): IVotePostByID {
     return {
         type: PostActionTypes.VOTE_POST_BY_ID,
         id,
@@ -84,14 +84,14 @@ export function VotePostByID(id: string, option: string): IVotePostByID {
     };
 }
 
-export function EditPostDetailsByID(post: IPost): IEditPostDetailsByID {
+export function editPostDetailsByID(post: IPost): IEditPostDetailsByID {
     return {
         type: PostActionTypes.EDIT_POST_DETAILS_BY_ID,
         post
     };
 }
 
-export function DeletePostByID(id: string): IDeletePostByID {
+export function deletePostByID(id: string): IDeletePostByID {
     return {
         type: PostActionTypes.DELETE_POST_BY_ID,
         id

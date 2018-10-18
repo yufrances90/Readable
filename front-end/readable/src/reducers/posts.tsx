@@ -1,25 +1,16 @@
 import { PostAction } from '../actions/posts';
 import { IPostState } from '../types/postState';
 import { PostActionTypes } from '../constants/posts';
+import { VoteOptions } from '../constants/shared';
 
 const initialState: IPostState = {
-    posts: {}
+    posts: []
 }
 
 export default function posts(state: IPostState = initialState, action: PostAction) {
     switch(action.type) {
         case PostActionTypes.GET_POSTS_BY_CATEGORY:
-
-            const filteredPosts: object = {};
-
-            Object.keys(state.posts).forEach(id => {
-
-                if (state.posts[id].category === action.category) {
-                    filteredPosts[id] = state.posts[id];
-                }
-            });
-
-            return filteredPosts;
+            return state.posts.filter(post => post.category === action.category);
         case PostActionTypes.GET_ALL_POSTS:
             return action.posts;
         case PostActionTypes.ADD_NEW_POST:
@@ -37,7 +28,7 @@ export default function posts(state: IPostState = initialState, action: PostActi
                     ...state.posts,
                     [action.id]: {
                         ...state.posts[action.id],
-                        voteScore: (action.option === "upVote")? 
+                        voteScore: (action.option === VoteOptions.UP_VOTE)? 
                             state.posts[action.id].voteScore + 1 : state.posts[action.id].voteScore - 1
                     }
                 }

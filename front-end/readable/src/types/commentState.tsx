@@ -1,3 +1,5 @@
+import IComment from '../interfaces/IComment';
+
 export interface ICommentState {
-    readonly comments: object;
+    readonly comments: IComment[];
 }

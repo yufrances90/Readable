@@ -1,3 +1,5 @@
+import IPost from '../interfaces/IPost';
+
 export interface IPostState {
-    readonly posts: object;
+    readonly posts: IPost[];
 }

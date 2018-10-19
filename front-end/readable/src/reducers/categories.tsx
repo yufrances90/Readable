@@ -3,15 +3,17 @@ import { ICategoryState } from '../types/categoryState';
 import { CategoryActionTypes } from '../constants/categories';
 
 const initialState: ICategoryState = {
-    categories: []
+    list: []
 }
 
 export default function categories(state: ICategoryState = initialState, action: CategoryAction) {
     switch(action.type) {
         case CategoryActionTypes.GET_ALL_CATEGORIES:
-            return action.categories;
+            return {
+                list: [...state.list, ...action.categories]
+            };
         case CategoryActionTypes.ADD_NEW_CATEGORY:
-            return state.categories.concat([action.category]);
+            return state.list.concat([action.category]);
         default:
             return state;
     }

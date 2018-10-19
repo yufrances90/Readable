@@ -10,7 +10,9 @@ class App extends Component {
         return (
             <div className="App">
                 <CustomizedNavbar />
-                <PCategory category={"redux"}/>
+                <div style={{marginTop: '2em'}}>
+                    <PCategory />
+                </div>
             </div>
         );
     }

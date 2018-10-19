@@ -10,7 +10,9 @@ const initialState: IPostState = {
 export default function posts(state: IPostState = initialState, action: PostAction) {
     switch(action.type) {
         case PostActionTypes.GET_POSTS_BY_CATEGORY:
-            return state.list.filter(post => post.category === action.category);
+            return {
+                list: [...action.posts]
+            }
         case PostActionTypes.GET_ALL_POSTS:
             return {
                 list: [...state.list, ...action.posts]

@@ -2,26 +2,81 @@ import React, { Component } from 'react';
 
 import { connect } from 'react-redux';
 
-import { Grid } from '@material-ui/core';
+import { 
+    Grid,
+    Typography,
+    Divider
+} from '@material-ui/core';
 
 import { getByCategory } from '../api/posts';
-import { getPostsByCategory } from '../actions/posts';
+import { getInitialData } from '../api/shared';
+import { 
+    getPostsByCategory,
+    getAllPosts
+} from '../actions/posts';
+import { getAllCategories } from '../actions/categories';
+
+import ListCategories from '../components/ListCategories';
 
 class PCategory extends Component {
 
-    componentDidMount() {
-        this.props.handleGetPostsByCategory(this.props.category);
+    state = {
+        selectedCategory: ''
     }
 
+    componentDidMount() {
+        
+        const { categories, handleGetAllData } = this.props;
+
+        if (categories.list.length === 0) {
+            handleGetAllData();
+        }
+    }
+
+    handleClick(event, category) {
+
+        event.preventDefault();
+
+        this.props.handleGetPostsByCategory(category);
+
+        this.setState({
+            selectedCategory: category
+        });
+    }
 
     render() {
+
+        const { categories, posts } = this.props;
+
+        const { selectedCategory } = this.state;
+
         return (
             <div>
                 <Grid container>
-                    <Grid item xs={2} style={{borderRight: '1px solid lightgray'}}>
-                        Hello
+                    <Grid item xs={2}>
+                        <Divider />
+                        <ListCategories 
+                            categories={categories.list}
+                            handleClick={this.handleClick.bind(this)}
+                        />
                     </Grid>
-                    <Grid item xs={8}>
+                    <Grid item xs={8} style={{borderLeft: '1px solid lightgray'}}>
+                        {
+                            selectedCategory !== '' &&
+                            <div>
+                                <Typography 
+                                    variant="h3" 
+                                    style={{
+                                        paddingTop: '0.5em', 
+                                        paddingBottom: '0.5em',
+                                        paddingLeft: '0.5em'
+                                    }}
+                                >
+                                    {this.state.selectedCategory.toUpperCase()}
+                                </Typography>
+                                <Divider />
+                            </div>
+                        }
                     </Grid>
                     <Grid item xs={2}>
                     </Grid>
@@ -31,9 +86,10 @@ class PCategory extends Component {
     }
 }
 
-function mapStateToProps({ posts }) {
+function mapStateToProps({ posts, categories }) {
     return {
-        posts
+        posts,
+        categories
     };
 }
 
@@ -43,6 +99,13 @@ function mapDispatchToProps(dispatch) {
             getByCategory(category)
             .then(posts => {
                 dispatch(getPostsByCategory(category, posts));
+            })
+        },
+        handleGetAllData: () => {
+            getInitialData()
+            .then(({categories, posts}) => {
+                dispatch(getAllCategories(categories));
+                dispatch(getAllPosts(posts));
             })
         }
     };

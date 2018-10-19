@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 
 import './App.css';
 import CustomizedNavbar from './components/CustomizedNavbar';
-import PHome from './pages/PHome';
+import PCategory from './pages/PCategory';
 
 class App extends Component {
 
@@ -10,7 +10,7 @@ class App extends Component {
         return (
             <div className="App">
                 <CustomizedNavbar />
-                <PHome />
+                <PCategory category={"redux"}/>
             </div>
         );
     }

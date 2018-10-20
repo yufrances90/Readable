@@ -120,7 +120,7 @@ function mapDispatchToProps(dispatch) {
         handleAddNewCategory: (newCategory) => {
             add(newCategory)
             .then((data) => {
-                dispatch(addNewCategory(data))
+                dispatch(addNewCategory(data.category));
             })
         }
     };

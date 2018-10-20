@@ -13,7 +13,9 @@ export default function categories(state: ICategoryState = initialState, action:
                 list: [...state.list, ...action.categories]
             };
         case CategoryActionTypes.ADD_NEW_CATEGORY:
-            return state.list.concat([action.category]);
+            return {
+                list: state.list.concat([action.category])
+            };
         default:
             return state;
     }

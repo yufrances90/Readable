@@ -5,18 +5,24 @@ import { connect } from 'react-redux';
 import { 
     Grid,
     Typography,
-    Divider
+    Divider,
+    Button
 } from '@material-ui/core';
 
+import { add } from '../api/categories';
 import { getByCategory } from '../api/posts';
 import { getInitialData } from '../api/shared';
 import { 
     getPostsByCategory,
     getAllPosts
 } from '../actions/posts';
-import { getAllCategories } from '../actions/categories';
+import { 
+    getAllCategories,
+    addNewCategory 
+} from '../actions/categories';
 
 import ListCategories from '../components/ListCategories';
+import NewCategoryModal from '../components/NewCategoryModal';
 
 class PCategory extends Component {
 
@@ -30,7 +36,7 @@ class PCategory extends Component {
 
         if (categories.list.length === 0) {
             handleGetAllData();
-        }
+        } 
     }
 
     handleClick(event, category) {
@@ -58,7 +64,10 @@ class PCategory extends Component {
                         <ListCategories 
                             categories={categories.list}
                             handleClick={this.handleClick.bind(this)}
+                            selectedCategory={selectedCategory}
                         />
+                        <NewCategoryModal />
+                        <Divider />
                     </Grid>
                     <Grid item xs={8} style={{borderLeft: '1px solid lightgray'}}>
                         {
@@ -106,6 +115,12 @@ function mapDispatchToProps(dispatch) {
             .then(({categories, posts}) => {
                 dispatch(getAllCategories(categories));
                 dispatch(getAllPosts(posts));
+            })
+        },
+        handleAddNewCategory: (newCategory) => {
+            add(newCategory)
+            .then((data) => {
+                dispatch(addNewCategory(data))
             })
         }
     };

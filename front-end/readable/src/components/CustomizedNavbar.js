@@ -12,7 +12,7 @@ class CustomizedNavbar extends Component {
                 <AppBar position="static" className="app-navbar">
                     <Toolbar>
                         <LibraryBooks style={{marginRight: '0.2em'}} />
-                        <Typography variant="title" color="inherit">
+                        <Typography variant="h6" color="inherit">
                             Readable
                         </Typography>
                     </Toolbar>

@@ -14,7 +14,8 @@ class ListCategories extends Component {
 
         const { 
             categories, 
-            handleClick
+            handleClick,
+            selectedCategory
         } = this.props;
 
         return (
@@ -25,6 +26,7 @@ class ListCategories extends Component {
                             button 
                             key={category.name}
                             onClick={(e) => handleClick(e, category.name)}
+                            selected={category.name === selectedCategory}
                         >
                             {category.name.toUpperCase()}
                         </ListItem>

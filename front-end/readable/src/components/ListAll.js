@@ -43,7 +43,7 @@ class ListAll extends Component {
                                     <ListItem key={post.id}>
                                         <Card style={{width: 800, height: 120}}>
                                             <CardContent>
-                                                <Typography variant="title">
+                                                <Typography variant="h6">
                                                     {post.title}
                                                 </Typography>
                                                 <Typography variant="body1" color="textSecondary">

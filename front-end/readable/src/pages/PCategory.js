@@ -66,7 +66,7 @@ class PCategory extends Component {
                             handleClick={this.handleClick.bind(this)}
                             selectedCategory={selectedCategory}
                         />
-                        <NewCategoryModal />
+                        <NewCategoryModal categories={categories.list} />
                         <Divider />
                     </Grid>
                     <Grid item xs={8} style={{borderLeft: '1px solid lightgray'}}>

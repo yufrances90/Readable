@@ -27,6 +27,9 @@ class NewCategoryModal extends Component {
     };
 
     render() {
+
+        const { categories } = this.props;
+
         return (
             <div>
                 <div 
@@ -36,13 +39,11 @@ class NewCategoryModal extends Component {
                         Add new category
                     </Button>
                     <Modal
-                        aria-labelledby="simple-modal-title"
-                        aria-describedby="simple-modal-description"
                         open={this.state.open}
                         onClose={this.handleClose}
                     >
                         <div className="app-new-category-modal">
-                            <NewCategoryForm />
+                            <NewCategoryForm categories={categories} />
                         </div>
                     </Modal>
                 </div>

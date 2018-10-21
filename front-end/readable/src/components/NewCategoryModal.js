@@ -3,7 +3,8 @@ import React, { Component } from 'react';
 import {
     Button,
     Modal,
-    Typography
+    Typography,
+    Dialog
 } from '@material-ui/core';
 
 import NewCategoryForm from './NewCategoryForm';
@@ -28,7 +29,7 @@ class NewCategoryModal extends Component {
 
     render() {
 
-        const { categories } = this.props;
+        const { categories, handleClickCreateBtn } = this.props;
 
         return (
             <div>
@@ -43,7 +44,10 @@ class NewCategoryModal extends Component {
                         onClose={this.handleClose}
                     >
                         <div className="app-new-category-modal">
-                            <NewCategoryForm categories={categories} />
+                            <NewCategoryForm 
+                                categories={categories}
+                                handleClickCreateBtn={handleClickCreateBtn}
+                            />
                         </div>
                     </Modal>
                 </div>

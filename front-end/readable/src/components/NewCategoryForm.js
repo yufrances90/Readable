@@ -12,19 +12,7 @@ class NewCategoryForm extends Component {
 
     state = {
         name: '',
-        hasError: false,
-        categoryList: []
-    }
-
-    componentDidMount() {
-
-        const { categories } = this.props;
-        
-        if (categories.length > 0) {
-            this.setState({
-                categoryList: categories.map(category => category.name)
-            })
-        }
+        hasError: false
     }
 
     handleChange(event) {
@@ -38,21 +26,30 @@ class NewCategoryForm extends Component {
 
         event.preventDefault();
 
-        const { name, categoryList } = this.state;
+        const { name } = this.state;
+
+        const { handleClickCreateBtn, categories } = this.props;
+
+        const categoryList = categories.map(category => category.name);
 
         if (categoryList.includes(name)) {
             
             alert("Error: Sorry, no duplicated categories is allowed!")
 
             this.setState({
-                hasError: true
+                hasError: true,
+                name: ''
             });
-        } 
+        } else {
+            handleClickCreateBtn(event, name.toLowerCase());
+        }
     }
 
     render() {
 
         const { name, hasError } = this.state;
+
+        const { categories } = this.props;
 
         return (
             <form style={{textAlign: "center"}}>
@@ -73,7 +70,7 @@ class NewCategoryForm extends Component {
                 <Button 
                     style={{marginTop: '2.3em'}} 
                     onClick={this.handleClick.bind(this)}
-                    disabled={hasError}
+                    disabled={name === ''}
                 >
                     Create
                 </Button>

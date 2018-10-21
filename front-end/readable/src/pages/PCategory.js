@@ -20,6 +20,9 @@ import {
     getAllCategories,
     addNewCategory 
 } from '../actions/categories';
+import {
+    createNewCategory
+} from '../utils/helpers';
 
 import ListCategories from '../components/ListCategories';
 import NewCategoryModal from '../components/NewCategoryModal';
@@ -50,6 +53,15 @@ class PCategory extends Component {
         });
     }
 
+    handleClickCreateBtn(event, categoryName) {
+
+        event.preventDefault();
+
+        const newCategory = createNewCategory(categoryName, categoryName);
+
+        this.props.handleAddNewCategory(newCategory);
+    }
+
     render() {
 
         const { categories, posts } = this.props;
@@ -66,7 +78,10 @@ class PCategory extends Component {
                             handleClick={this.handleClick.bind(this)}
                             selectedCategory={selectedCategory}
                         />
-                        <NewCategoryModal categories={categories.list} />
+                        <NewCategoryModal 
+                            categories={categories.list} 
+                            handleClickCreateBtn={this.handleClickCreateBtn.bind(this)}
+                        />
                         <Divider />
                     </Grid>
                     <Grid item xs={8} style={{borderLeft: '1px solid lightgray'}}>

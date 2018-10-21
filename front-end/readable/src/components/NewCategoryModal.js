@@ -6,6 +6,9 @@ import {
     Typography,
     Dialog
 } from '@material-ui/core';
+import {
+    Add
+} from '@material-ui/icons';
 
 import NewCategoryForm from './NewCategoryForm';
 
@@ -36,8 +39,9 @@ class NewCategoryModal extends Component {
                 <div 
                     style={{margin: '1em'}}
                 >
-                    <Button variant="outlined" color="primary" onClick={this.handleOpen}>
-                        Add new category
+                    <Button color="primary" onClick={this.handleOpen}>
+                        <Add />
+                        new category
                     </Button>
                     <Modal
                         open={this.state.open}

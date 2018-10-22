@@ -26,6 +26,7 @@ import {
 
 import ListCategories from '../components/ListCategories';
 import NewCategoryModal from '../components/NewCategoryModal';
+import ListPostsPC from '../components/ListPostsPC';
 
 class PCategory extends Component {
 
@@ -85,21 +86,11 @@ class PCategory extends Component {
                         <Divider />
                     </Grid>
                     <Grid item xs={8} style={{borderLeft: '1px solid lightgray'}}>
-                        {
-                            selectedCategory !== '' &&
-                            <div>
-                                <Typography 
-                                    variant="h3" 
-                                    style={{
-                                        paddingTop: '0.5em', 
-                                        paddingBottom: '0.5em',
-                                        paddingLeft: '0.5em'
-                                    }}
-                                >
-                                    {this.state.selectedCategory.toUpperCase()}
-                                </Typography>
-                                <Divider />
-                            </div>
+                        { 
+                            selectedCategory !== '' && 
+                            <ListPostsPC 
+                                selectedCategory={selectedCategory} 
+                            /> 
                         }
                     </Grid>
                     <Grid item xs={2}>

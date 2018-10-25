@@ -2,10 +2,21 @@ import React, { Component } from 'react';
 
 import {
     Typography,
-    Divider
+    Divider,
+    IconButton,
+    Tooltip
 } from '@material-ui/core';
+import { Sort } from '@material-ui/icons'
 
 class ListPostsPC extends Component {
+
+    handleClick(event) {
+
+        console.log(event.target);
+
+        this.props.handleSelectSortMethod("timestamp");
+    }
+
     render() {
 
         const { selectedCategory } = this.props;
@@ -21,6 +32,11 @@ class ListPostsPC extends Component {
                     }}
                 >
                     {selectedCategory.toUpperCase()}
+                    <Tooltip title="Sort by">
+                        <IconButton onClick={this.handleClick.bind(this)}>
+                            <Sort />
+                        </IconButton>
+                    </Tooltip>
                 </Typography>
                 <Divider />
             </div>

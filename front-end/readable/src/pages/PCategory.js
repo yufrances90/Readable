@@ -31,7 +31,8 @@ import ListPostsPC from '../components/ListPostsPC';
 class PCategory extends Component {
 
     state = {
-        selectedCategory: ''
+        selectedCategory: '',
+        sortMethod: null
     }
 
     componentDidMount() {
@@ -63,6 +64,12 @@ class PCategory extends Component {
         this.props.handleAddNewCategory(newCategory);
     }
 
+    handleSelectSortMethod(sortMethod) {
+        this.setState({
+            sortMethod: sortMethod
+        });
+    }
+
     render() {
 
         const { categories, posts } = this.props;
@@ -84,12 +91,14 @@ class PCategory extends Component {
                             handleClickCreateBtn={this.handleClickCreateBtn.bind(this)}
                         />
                         <Divider />
+                        {this.state.sortMethod}
                     </Grid>
                     <Grid item xs={8} style={{borderLeft: '1px solid lightgray'}}>
                         { 
                             selectedCategory !== '' && 
                             <ListPostsPC 
-                                selectedCategory={selectedCategory} 
+                                selectedCategory={selectedCategory}
+                                handleSelectSortMethod={this.handleSelectSortMethod.bind(this)}
                             /> 
                         }
                     </Grid>

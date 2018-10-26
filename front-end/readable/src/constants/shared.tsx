@@ -5,3 +5,18 @@ export const enum VoteOptions {
     UP_VOTE = "upVote",
     DOWN_VOTE = "downVote"
 }
+
+export const sortMethodMenuItems = [
+    {
+        key: "none",
+        value: ""
+    },
+    {
+        key: "timestamp",
+        value: "Timestamp"
+    },
+    {
+        key: "voteScore",
+        value: "Vote Score"
+    }
+];

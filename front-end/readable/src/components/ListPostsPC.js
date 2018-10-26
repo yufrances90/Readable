@@ -4,11 +4,30 @@ import {
     Typography,
     Divider,
     IconButton,
-    Tooltip
+    Tooltip,
+    FormControl,
+    InputLabel,
+    Select,
+    MenuItem
 } from '@material-ui/core';
-import { Sort } from '@material-ui/icons'
+import { Sort } from '@material-ui/icons';
+
+import { sortMethodMenuItems } from '../constants/shared';
 
 class ListPostsPC extends Component {
+
+    state = {
+        sortMethod: ''
+    }
+
+    handleChange(event) {
+
+        this.setState({
+            [event.target.name]: event.target.value
+        });
+
+        this.props.handleSelectSortMethod(event.target.value);
+    }
 
     handleClick(event) {
 
@@ -21,6 +40,8 @@ class ListPostsPC extends Component {
 
         const { selectedCategory } = this.props;
 
+        const { sortMethod } = this.state;
+
         return (
             <div>
                 <Typography 
@@ -32,11 +53,28 @@ class ListPostsPC extends Component {
                     }}
                 >
                     {selectedCategory.toUpperCase()}
-                    <Tooltip title="Sort by">
-                        <IconButton onClick={this.handleClick.bind(this)}>
-                            <Sort />
-                        </IconButton>
-                    </Tooltip>
+                    <span>
+                        <InputLabel 
+                            htmlFor="sort-method"
+                            style={{marginRight: '0.5em'}}
+                        >
+                            Sort by
+                        </InputLabel>
+                        <Select 
+                            value={sortMethod}
+                            onChange={this.handleChange.bind(this)}
+                            inputProps={{
+                                name: 'sortMethod',
+                                id: 'sort-method',
+                            }}
+                        >
+                            {sortMethodMenuItems.map(sMethod => (
+                                <MenuItem key={sMethod.key} value={sMethod.key}>
+                                    {sMethod.value}
+                                </MenuItem>
+                            ))}
+                        </Select>
+                    </span>
                 </Typography>
                 <Divider />
             </div>

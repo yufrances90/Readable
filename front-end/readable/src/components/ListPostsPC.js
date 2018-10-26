@@ -29,13 +29,6 @@ class ListPostsPC extends Component {
         this.props.handleSelectSortMethod(event.target.value);
     }
 
-    handleClick(event) {
-
-        console.log(event.target);
-
-        this.props.handleSelectSortMethod("timestamp");
-    }
-
     render() {
 
         const { selectedCategory } = this.props;

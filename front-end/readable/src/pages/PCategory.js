@@ -108,7 +108,16 @@ class PCategory extends Component {
         return (
             <div>
                 <Grid container>
-                    <Grid item xs={2}>
+                    <Grid item xs={1}>
+                    </Grid>
+                    <Grid 
+                        item 
+                        xs={2}
+                        style={{
+                            borderLeft: '1px solid lightgray',
+                            borderRight: '1px solid lightgray'
+                        }}
+                    >
                         <Divider />
                         <ListCategories 
                             categories={categories.list}
@@ -121,7 +130,7 @@ class PCategory extends Component {
                         />
                         <Divider />
                     </Grid>
-                    <Grid item xs={8} style={{borderLeft: '1px solid lightgray'}}>
+                    <Grid item xs={8}>
                         { 
                             selectedCategory !== '' && 
                             <ListPostsPC 
@@ -131,7 +140,7 @@ class PCategory extends Component {
                             /> 
                         }
                     </Grid>
-                    <Grid item xs={2}>
+                    <Grid item xs={1}>
                     </Grid>
                 </Grid>
             </div>

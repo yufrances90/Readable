@@ -32,7 +32,8 @@ class PCategory extends Component {
 
     state = {
         selectedCategory: '',
-        sortMethod: null
+        sortMethod: null,
+        sortedPosts: []
     }
 
     componentDidMount() {
@@ -65,16 +66,44 @@ class PCategory extends Component {
     }
 
     handleSelectSortMethod(sortMethod) {
+
         this.setState({
             sortMethod: sortMethod
         });
+
+        const {
+            posts,
+            sortedPostsByTimestamp,
+            sortedPostsByVoteScore
+        } = this.props;
+
+        switch(sortMethod) {
+            case "voteScore":
+                this.setState({
+                    sortedPosts: sortedPostsByVoteScore
+                })
+                break;
+            case "timestamp": 
+                this.setState({
+                    sortedPosts: sortedPostsByTimestamp
+                })
+                break;
+            default:
+                this.setState({
+                    sortedPosts: posts
+                });
+        }
+
     }
 
     render() {
 
-        const { categories, posts } = this.props;
+        const { categories } = this.props;
 
-        const { selectedCategory } = this.state;
+        const { 
+            selectedCategory,
+            sortedPosts
+        } = this.state;
 
         return (
             <div>
@@ -91,7 +120,6 @@ class PCategory extends Component {
                             handleClickCreateBtn={this.handleClickCreateBtn.bind(this)}
                         />
                         <Divider />
-                        {this.state.sortMethod}
                     </Grid>
                     <Grid item xs={8} style={{borderLeft: '1px solid lightgray'}}>
                         { 
@@ -99,6 +127,7 @@ class PCategory extends Component {
                             <ListPostsPC 
                                 selectedCategory={selectedCategory}
                                 handleSelectSortMethod={this.handleSelectSortMethod.bind(this)}
+                                posts={sortedPosts.list}
                             /> 
                         }
                     </Grid>
@@ -111,9 +140,40 @@ class PCategory extends Component {
 }
 
 function mapStateToProps({ posts, categories }) {
+
+    const postList = Array.from(posts.list);
+
     return {
         posts,
-        categories
+        categories,
+        sortedPostsByVoteScore: {
+            list: postList.map(post => {
+                return {
+                    id: post.id,
+                    category: post.category,
+                    title: post.title,
+                    author: post.author,
+                    commentCount: post.commentCount,
+                    deleted: post.deleted,
+                    voteScore: post.voteScore,
+                    timestamp: post.timestamp
+                }
+            }).sort((a, b) => b.voteScore - a.voteScore)
+        },
+        sortedPostsByTimestamp: {
+            list: postList.map(post => {
+                return {
+                    id: post.id,
+                    category: post.category,
+                    title: post.title,
+                    author: post.author,
+                    commentCount: post.commentCount,
+                    deleted: post.deleted,
+                    voteScore: post.voteScore,
+                    timestamp: post.timestamp
+                }
+            }).sort((a, b) => b.timestamp - a.timestamp)
+        }
     };
 }
 

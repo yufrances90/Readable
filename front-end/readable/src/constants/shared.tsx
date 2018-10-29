@@ -9,7 +9,7 @@ export const enum VoteOptions {
 export const sortMethodMenuItems = [
     {
         key: "none",
-        value: ""
+        value: "None"
     },
     {
         key: "timestamp",

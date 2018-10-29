@@ -47,11 +47,17 @@ class PCategory extends Component {
         } 
     }
 
+    setSortedPosts() {
+        this.setState({
+            sortedPosts: this.props.posts
+        })
+    }
+
     handleClick(event, category) {
 
         event.preventDefault();
 
-        this.props.handleGetPostsByCategory(category);
+        this.props.handleGetPostsByCategory(category, this.setSortedPosts.bind(this));
 
         this.setState({
             selectedCategory: category
@@ -190,11 +196,11 @@ function mapStateToProps({ posts, categories }) {
 
 function mapDispatchToProps(dispatch) {
     return {
-        handleGetPostsByCategory: (category) => {
+        handleGetPostsByCategory: (category, setSortedPosts) => {
             getByCategory(category)
             .then(posts => {
                 dispatch(getPostsByCategory(category, posts));
-            })
+            }).then(() => setSortedPosts());
         },
         handleGetAllData: () => {
             getInitialData()

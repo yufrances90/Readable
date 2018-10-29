@@ -16,6 +16,13 @@ import {
 
 import { formatDate } from '../utils/utility';
 
+const jumbotronStyle = {
+    paddingBottom: '150px',
+    boxShadow: "0px 0px 0px 0px rgba(0,0,0,0)"
+}
+
+const appName = "Readable";
+
 class ListAll extends Component {
 
     render() {
@@ -32,35 +39,13 @@ class ListAll extends Component {
        
         return (
             <div>
-                {categoryList.map(category => (
-                    <div key={category.name}>
-                        <h1> {category.name.toUpperCase()}  </h1>
-                        <Divider />
-                        <List>
-                            { postList
-                                .filter(post => post.category === category.name)
-                                .map(post => (
-                                    <ListItem key={post.id}>
-                                        <Card style={{width: 800, height: 120}}>
-                                            <CardContent>
-                                                <Typography variant="h6">
-                                                    {post.title}
-                                                </Typography>
-                                                <Typography variant="body1" color="textSecondary">
-                                                    {post.author} |  {formatDate(post.timestamp)} | 
-                                                    comments: {post.commentCount} | 
-                                                    votes: {post.voteScore}
-                                                </Typography>
-                                            </CardContent>
-                                            <CardActions>
-                                                <Button size="small">Learn More</Button>
-                                            </CardActions>
-                                        </Card>
-                                    </ListItem>
-                                ))}
-                        </List>
+                <div className="card-panel grey lighten-2" style={jumbotronStyle}>
+                    <div className="container">
+                        <h1>{appName}</h1>
+                        <p>A content and comment web app using React & Redux</p>
                     </div>
-                ))}
+                </div>
+                <Divider />
             </div>
         );
     }

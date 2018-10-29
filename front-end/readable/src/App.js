@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 
 import './App.css';
 import CustomizedNavbar from './components/CustomizedNavbar';
-import PCategory from './pages/PCategory';
+import PCreate from './pages/PCreate';
 
 class App extends Component {
 
@@ -11,7 +11,7 @@ class App extends Component {
             <div className="App">
                 <CustomizedNavbar />
                 <div style={{marginTop: '2em'}}>
-                    <PCategory />
+                    <PCreate />
                 </div>
             </div>
         );

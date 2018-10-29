@@ -19,7 +19,7 @@ export default function posts(state: IPostState = initialState, action: PostActi
             };
         case PostActionTypes.ADD_NEW_POST:
             return {
-                posts: {
+                list: {
                     ...state.list,
                     [action.post.id]: action.post
                 }
@@ -28,7 +28,7 @@ export default function posts(state: IPostState = initialState, action: PostActi
             return state.list[action.id];
         case PostActionTypes.VOTE_POST_BY_ID:
             return {
-                posts: {
+                list: {
                     ...state.list,
                     [action.id]: {
                         ...state.list[action.id],
@@ -39,14 +39,14 @@ export default function posts(state: IPostState = initialState, action: PostActi
             }
         case PostActionTypes.EDIT_POST_DETAILS_BY_ID:
             return {
-                posts: {
+                list: {
                     ...state.list,
                     [action.post.id]: action.post
                 }
             }
         case PostActionTypes.DELETE_POST_BY_ID:
             return {
-                posts: {
+                list: {
                     ...state.list,
                     [action.id]: {
                         ...state.list[action.id],

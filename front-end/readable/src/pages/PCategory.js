@@ -33,7 +33,9 @@ class PCategory extends Component {
     state = {
         selectedCategory: '',
         sortMethod: null,
-        sortedPosts: []
+        sortedPosts: {
+            list: []
+        }
     }
 
     componentDidMount() {

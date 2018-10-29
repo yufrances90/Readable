@@ -30,7 +30,7 @@ class ListPostsPC extends Component {
                     !posts && 
                     <div className="app-circular-progress">
                         <Tooltip 
-                            title="Please select sort method."
+                            title="Error: Internal Error(No post is available)!."
                             placement="right"
                         >
                             <CircularProgress color="primary" /> 

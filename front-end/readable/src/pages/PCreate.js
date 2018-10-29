@@ -25,6 +25,22 @@ class PCreate extends Component {
         }
     }
 
+    handleSubmitForm(
+        title, 
+        body, 
+        author, 
+        category) {
+
+        const newPost = createNewPost(
+                title,
+                body,
+                author,
+                category
+            );
+
+        this.props.handleAddNewPost(newPost);
+    } 
+
     render() {
 
         const { categories } = this.props;
@@ -35,7 +51,10 @@ class PCreate extends Component {
                     <Grid item xs={3}>
                     </Grid>
                     <Grid item xs={6}>
-                        <NewPostForm categories={categories.list} />
+                        <NewPostForm 
+                            categories={categories.list} 
+                            handleSubmitForm={this.handleSubmitForm.bind(this)}
+                        />
                     </Grid>
                 </Grid>
             </div>

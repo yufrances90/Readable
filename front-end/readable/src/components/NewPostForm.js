@@ -24,6 +24,20 @@ class NewPostForm extends Component {
         })
     }
 
+    handleClick(event) {
+        
+        event.preventDefault();
+
+        const {
+            title,
+            body,
+            author,
+            selectedCategory
+        } = this.state;
+
+        this.props.handleSubmitForm(title, body, author, selectedCategory);
+    }
+
     render() {
 
         const { categories } = this.props;
@@ -100,6 +114,7 @@ class NewPostForm extends Component {
                 <Button
                     variant="outlined"
                     style={{ left: '35%' }}
+                    onClick={this.handleClick.bind(this)}
                 >
                     Create 
                 </Button>

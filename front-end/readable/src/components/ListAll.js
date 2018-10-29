@@ -16,12 +16,7 @@ import {
 
 import { formatDate } from '../utils/utility';
 
-const jumbotronStyle = {
-    paddingBottom: '150px',
-    boxShadow: "0px 0px 0px 0px rgba(0,0,0,0)"
-}
-
-const appName = "Readable";
+import ListAllHeader from './ListAllHeader';
 
 class ListAll extends Component {
 
@@ -39,13 +34,7 @@ class ListAll extends Component {
        
         return (
             <div>
-                <div className="card-panel grey lighten-2" style={jumbotronStyle}>
-                    <div className="container">
-                        <h1>{appName}</h1>
-                        <p>A content and comment web app using React &amp; Redux</p>
-                    </div>
-                </div>
-                <Divider />
+                <ListAllHeader />
             </div>
         );
     }

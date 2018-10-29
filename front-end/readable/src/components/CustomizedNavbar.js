@@ -5,6 +5,8 @@ import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
 import { LibraryBooks } from '@material-ui/icons';
 
+import { appName } from '../constants/shared';
+
 class CustomizedNavbar extends Component {
     render() {
         return (
@@ -13,7 +15,7 @@ class CustomizedNavbar extends Component {
                     <Toolbar>
                         <LibraryBooks style={{marginRight: '0.2em'}} />
                         <Typography variant="h6" color="inherit">
-                            Readable
+                            {appName}
                         </Typography>
                     </Toolbar>
                 </AppBar>

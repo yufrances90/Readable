@@ -20,3 +20,5 @@ export const sortMethodMenuItems = [
         value: "Vote Score"
     }
 ];
+
+export const appName = "Readable";

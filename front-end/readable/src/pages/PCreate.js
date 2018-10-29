@@ -32,11 +32,10 @@ class PCreate extends Component {
         return (
             <div>
                 <Grid container>
-                    <Grid item xs={2}>
+                    <Grid item xs={3}>
                     </Grid>
-                    <Grid item xs={8}>
-                        {console.log(categories)}
-                        <NewPostForm />
+                    <Grid item xs={6}>
+                        <NewPostForm categories={categories.list} />
                     </Grid>
                 </Grid>
             </div>

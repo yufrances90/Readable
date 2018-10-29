@@ -122,11 +122,9 @@ class PCategory extends Component {
                         item 
                         xs={2}
                         style={{
-                            borderLeft: '1px solid lightgray',
-                            borderRight: '1px solid lightgray'
+                            border: '1px solid lightgray'
                         }}
                     >
-                        <Divider />
                         <ListCategories 
                             categories={categories.list}
                             handleClick={this.handleClick.bind(this)}

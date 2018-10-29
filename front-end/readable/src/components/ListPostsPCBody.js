@@ -14,8 +14,6 @@ class ListPostsPCBody extends Component {
             posts
         } = this.props;
 
-        console.log(posts);
-
         return (
             <div>
                 { 

@@ -42,7 +42,7 @@ class ListAll extends Component {
                 <div className="card-panel grey lighten-2" style={jumbotronStyle}>
                     <div className="container">
                         <h1>{appName}</h1>
-                        <p>A content and comment web app using React & Redux</p>
+                        <p>A content and comment web app using React &amp; Redux</p>
                     </div>
                 </div>
                 <Divider />

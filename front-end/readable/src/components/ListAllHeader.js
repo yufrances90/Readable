@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-import { Divider } from '@material-ui/core';
+import { Divider, Typography } from '@material-ui/core';
 
 import { appName } from '../constants/shared';
 
@@ -10,7 +10,7 @@ class ListAllHeader extends Component {
             <div>
                 <div className="card-panel grey lighten-2 app-jumbotron" >
                     <div className="container">
-                        <h1>{appName}</h1>
+                        <Typography variant="h3">{appName}</Typography>
                         <p>A content and comment web app using React &amp; Redux</p>
                     </div>
                 </div>

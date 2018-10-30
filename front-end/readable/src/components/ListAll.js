@@ -18,6 +18,7 @@ import { formatDate } from '../utils/utility';
 
 import ListAllHeader from './ListAllHeader';
 import ListAllCategories from './ListAllCategories'
+import ListAllPosts from './ListAllPosts';
 
 class ListAll extends Component {
 
@@ -38,6 +39,9 @@ class ListAll extends Component {
                 <ListAllHeader />
                 <div style={{marginTop: '7em'}}>
                     <ListAllCategories categories={categoryList} />
+                </div>
+                <div style={{marginTop: '2em'}}>
+                    <ListAllPosts posts={postList} />
                 </div>
             </div>
         );

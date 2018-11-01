@@ -40,9 +40,12 @@ class ListAll extends Component {
                 <div style={{marginTop: '7em'}}>
                     <ListAllCategories categories={categoryList} />
                 </div>
-                <div style={{marginTop: '2em'}}>
+                <div style={{marginTop: '7em'}}>
                     <ListAllPosts posts={postList} />
                 </div>
+                <br />
+                <br />
+                <br />
             </div>
         );
     }

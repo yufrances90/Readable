@@ -31,3 +31,9 @@
     padding-bottom: 150px;
     box-shadow: 0px 0px 0px 0px rgba(0,0,0,0);
 }
+
+.app-flex-container {
+    display: flex;
+    flex-direction: row;
+    padding: 0;
+}

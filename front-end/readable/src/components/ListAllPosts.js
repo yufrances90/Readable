@@ -4,22 +4,66 @@ import {
     List, 
     ListItem, 
     Typography,
-    Divider
+    Divider,
+    InputLabel,
+    Select,
+    MenuItem
 } from '@material-ui/core';
 
+import { sortMethodMenuItems } from '../constants/shared';
+
 class ListAllPosts extends Component {
+
+    state = {
+        sortMethod: '',
+        sortedPosts: this.props.posts
+    }
+
+    handleChange(event) {
+
+        this.setState({
+            [event.target.name]: event.target.value
+        });
+    }
+
+
     render() {
 
-        const { posts } = this.props;
+        const { sortMethod, sortedPosts } = this.state;
 
         return (
             <div>
-                <Typography variant="h4" style={{ textAlign: "center" }}>
+                <Typography variant="h4">
                     { "posts".toUpperCase() }
+                    <span
+                        style={{marginLeft: '0.5em'}}
+                    >
+                        <InputLabel 
+                            htmlFor="sort-method"
+                            style={{marginRight: '0.5em'}}
+                        >
+                            Sort by
+                        </InputLabel>
+                        <Select 
+                            value={sortMethod}
+                            onChange={this.handleChange.bind(this)}
+                            inputProps={{
+                                name: 'sortMethod',
+                                id: 'sort-method',
+                            }}
+                        >
+                            {sortMethodMenuItems.map(sMethod => (
+                                <MenuItem key={sMethod.key} value={sMethod.key}>
+                                    {sMethod.value}
+                                </MenuItem>
+                            ))}
+                        </Select>
+                    </span>
                 </Typography>
+                <br />
                 <Divider />
-                <List>
-                    {posts.map(post => (
+                <List className="app-flex-container">
+                    {sortedPosts.map(post => (
                         <ListItem button key={post.id}>
                             {post.title}
                         </ListItem>

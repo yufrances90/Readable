@@ -5,6 +5,8 @@ import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
 import { LibraryBooks } from '@material-ui/icons';
 
+import { NavLink } from 'react-router-dom';
+
 import { appName } from '../constants/shared';
 
 class CustomizedNavbar extends Component {
@@ -13,10 +15,16 @@ class CustomizedNavbar extends Component {
             <div>
                 <AppBar position="static" className="app-navbar">
                     <Toolbar>
-                        <LibraryBooks style={{marginRight: '0.2em'}} />
-                        <Typography variant="h6" color="inherit">
-                            {appName}
-                        </Typography>
+                        <ul>
+                            <li>
+                                <NavLink to='/' exact activeClassName='active' className="app-link">
+                                    <Typography variant="h6" color="inherit">
+                                        <LibraryBooks style={{marginRight: '0.2em'}} />
+                                        {appName}
+                                    </Typography>
+                                </NavLink>
+                            </li>
+                        </ul>
                     </Toolbar>
                 </AppBar>
             </div>

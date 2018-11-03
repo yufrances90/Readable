@@ -12,7 +12,12 @@ import ListAll from '../components/ListAll';
 class PHome extends Component {
 
     componentDidMount() {
-        this.props.handleReceiveData();
+
+        const { categories } = this.props;
+        
+        if (categories.list.length <= 0) {
+            this.props.handleReceiveData();
+        }
     }
 
     render() {

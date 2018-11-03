@@ -37,3 +37,13 @@
     flex-direction: row;
     padding: 0;
 }
+
+ul {
+    list-style-type: none;
+}
+
+.app-link {
+    text-decoration: none;
+    color: inherit;
+}
+  

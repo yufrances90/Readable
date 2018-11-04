@@ -8,6 +8,8 @@ import {
     List
 } from '@material-ui/core';
 
+import { Link } from 'react-router-dom';
+
 class ListAllCategories extends Component {
     render() {
 
@@ -25,9 +27,19 @@ class ListAllCategories extends Component {
                             key={category.name} 
                             button
                         >
-                             <Typography variant="h6">
-                                {category.name.charAt(0).toUpperCase() + category.name.slice(1)}
-                            </Typography>
+                            <Link 
+                                to={{
+                                    pathname: `${category.path}`,
+                                    state: {
+                                        selectedCategory: category.name
+                                    }
+                                }} 
+                                className="app-link" 
+                            >
+                                <Typography variant="h6">
+                                    {category.name.charAt(0).toUpperCase() + category.name.slice(1)}
+                                </Typography>
+                            </Link>
                         </ListItem>
                     ))} 
                 </List> 

@@ -40,11 +40,21 @@ class PCategory extends Component {
 
     componentDidMount() {
         
-        const { categories, handleGetAllData } = this.props;
+        const { 
+            categories, 
+            handleGetAllData,
+            location
+        } = this.props;
 
         if (categories.list.length === 0) {
             handleGetAllData();
         } 
+
+        if (location && location.state) {
+            this.setState({
+                selectedCategory: location.state.selectedCategory
+            })
+        }
     }
 
     setSortedPosts() {

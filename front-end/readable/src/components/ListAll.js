@@ -30,7 +30,7 @@ class ListAll extends Component {
 
         const postList = posts.list;
 
-        if ( categoryList.length === 0 || postList.length === 0)  {
+        if ( categoryList.length === 0)  {
             return <LinearProgress />
         }
        

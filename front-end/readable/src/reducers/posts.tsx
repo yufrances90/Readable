@@ -15,7 +15,7 @@ export default function posts(state: IPostState = initialState, action: PostActi
             }
         case PostActionTypes.GET_ALL_POSTS:
             return {
-                list: [...state.list, ...action.posts]
+                list: [...action.posts]
             };
         case PostActionTypes.ADD_NEW_POST:
             return {

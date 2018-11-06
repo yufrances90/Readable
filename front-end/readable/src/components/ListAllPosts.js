@@ -15,8 +15,7 @@ import { sortMethodMenuItems } from '../constants/shared';
 class ListAllPosts extends Component {
 
     state = {
-        sortMethod: '',
-        sortedPosts: this.props.posts
+        sortMethod: ''
     }
 
     handleChange(event) {
@@ -29,7 +28,7 @@ class ListAllPosts extends Component {
 
     render() {
 
-        const { sortMethod, sortedPosts } = this.state;
+        const { sortMethod } = this.state;
 
         return (
             <div>
@@ -63,7 +62,7 @@ class ListAllPosts extends Component {
                 <br />
                 <Divider />
                 <List className="app-flex-container">
-                    {sortedPosts.map(post => (
+                    {this.props.posts.map(post => (
                         <ListItem button key={post.id}>
                             {post.title}
                         </ListItem>

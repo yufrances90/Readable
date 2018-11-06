@@ -10,7 +10,7 @@ export default function categories(state: ICategoryState = initialState, action:
     switch(action.type) {
         case CategoryActionTypes.GET_ALL_CATEGORIES:
             return {
-                list: [...state.list, ...action.categories]
+                list: [...action.categories]
             };
         case CategoryActionTypes.ADD_NEW_CATEGORY:
             return {

@@ -15,9 +15,7 @@ class PHome extends Component {
 
         const { categories } = this.props;
         
-        if (categories.list.length <= 0) {
-            this.props.handleReceiveData();
-        }
+        this.props.handleReceiveData();
     }
 
     render() {
@@ -40,7 +38,7 @@ class PHome extends Component {
     }
 }
 
-function mapStatetoProps({ categories, posts}) {
+function mapStatetoProps({ categories, posts }) {
     return {
         categories,
         posts
@@ -51,7 +49,7 @@ function mapDispatchToProps(dispatch) {
     return {
         handleReceiveData: () => {
             getInitialData()
-            .then(({ categories, posts}) => {
+            .then(({ categories, posts }) => {
                 dispatch(getAllCategories(categories))
                 dispatch(getAllPosts(posts));
             })

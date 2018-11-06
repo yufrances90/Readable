@@ -88,6 +88,9 @@ class PCategory extends Component {
         this.setState({
             sortMethod: sortMethod
         });
+    }
+
+    getSortedPosts() {
 
         const {
             posts,
@@ -95,23 +98,16 @@ class PCategory extends Component {
             sortedPostsByVoteScore
         } = this.props;
 
+        const { sortMethod } = this.state;
+
         switch(sortMethod) {
             case "voteScore":
-                this.setState({
-                    sortedPosts: sortedPostsByVoteScore
-                })
-                break;
+                return sortedPostsByVoteScore;
             case "timestamp": 
-                this.setState({
-                    sortedPosts: sortedPostsByTimestamp
-                })
-                break;
+                return sortedPostsByTimestamp;
             default:
-                this.setState({
-                    sortedPosts: posts
-                });
+                return posts;
         }
-
     }
 
     render() {
@@ -152,7 +148,7 @@ class PCategory extends Component {
                             <ListPostsPC 
                                 selectedCategory={selectedCategory}
                                 handleSelectSortMethod={this.handleSelectSortMethod.bind(this)}
-                                posts={sortedPosts.list}
+                                posts={this.getSortedPosts().list.filter(post => post.category === selectedCategory)}
                             /> 
                         }
                     </Grid>

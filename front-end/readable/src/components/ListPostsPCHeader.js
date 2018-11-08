@@ -4,8 +4,11 @@ import {
     Typography,
     InputLabel,
     Select,
-    MenuItem
+    MenuItem,
+    Button
 } from '@material-ui/core';
+
+import { Link } from 'react-router-dom';
 
 import { sortMethodMenuItems } from '../constants/shared';
 
@@ -64,6 +67,15 @@ class ListPostsPCHeader extends Component {
                                 </MenuItem>
                             ))}
                         </Select>
+                        <Button 
+                            variant="outlined"
+                            style={{marginLeft: '1em'}} 
+                            color="secondary"
+                        >
+                            <Link to="/post/new/add" className="app-link">
+                                Create New Post
+                            </Link>
+                        </Button>
                     </span>
                 </Typography>
             </div>

@@ -31,9 +31,18 @@ class ListAllPosts extends Component {
 
         const { posts } = this.props;
 
-        const sortedPosts = posts;
+        const { sortMethod } = this.state;
 
-        return sortedPosts;
+        switch(sortMethod) {
+            case 'timestamp':
+                posts.sort((a, b) => b.timestamp - a.timestamp);
+                return posts;
+            case 'voteScore':
+                posts.sort((a, b) => b.voteScore - a.voteScore);
+                return posts;
+            default:
+                return posts;
+        }
     }
 
 

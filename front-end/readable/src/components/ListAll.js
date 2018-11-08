@@ -28,11 +28,11 @@ class ListAll extends Component {
 
         const categoryList = categories.list;
 
-        const postList = posts.list;
-
-        if ( categoryList.length === 0)  {
+        if ( categoryList.length === 0 || !posts)  {
             return <LinearProgress />
         }
+
+        const postList = (posts && posts.list.length > 0)? posts.list : [];
        
         return (
             <div>

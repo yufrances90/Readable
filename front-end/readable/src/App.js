@@ -23,7 +23,7 @@ class App extends Component {
                         <Route exact path="/" component={PHome} />
                         <Route exact path="/:category/:post_id" component={PPost} />
                         <Route exact path="/:category" component={PCategory} />
-                        <Route exact path="/add" component={PCreate} />
+                        <Route exact path="/post/new/add" component={PCreate} />
                     </div>
                 </div>
             </Router>

@@ -18,7 +18,12 @@ class PCPost extends Component {
 
         const { history, post } = this.props;
 
-        history.push(`${post.category}/${post.id}`);
+        history.push({
+            pathname: `${post.category}/${post.id}`,
+            state: {
+                postId: post.id
+            }
+        });
     }
 
     render() {

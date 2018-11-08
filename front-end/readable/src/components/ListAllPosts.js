@@ -27,6 +27,15 @@ class ListAllPosts extends Component {
         });
     }
 
+    getSortedPosts() {
+
+        const { posts } = this.props;
+
+        const sortedPosts = posts;
+
+        return sortedPosts;
+    }
+
 
     render() {
 
@@ -64,11 +73,14 @@ class ListAllPosts extends Component {
                 <br />
                 <Divider />
                 <List className="app-flex-container">
-                    {this.props.posts.map(post => (
+                    {this.getSortedPosts().map(post => (
                         <ListItem button key={post.id}>
                             <Link
                                 to={{
                                     pathname: `${post.category}/${post.id}`,
+                                    state: {
+                                        postId: post.id
+                                    }
                                 }}
                                 className="app-link"
                             >

@@ -112,7 +112,10 @@ class PCategory extends Component {
 
     render() {
 
-        const { categories } = this.props;
+        const { 
+            categories,
+            history 
+        } = this.props;
 
         const { 
             selectedCategory,
@@ -149,6 +152,7 @@ class PCategory extends Component {
                                 selectedCategory={selectedCategory}
                                 handleSelectSortMethod={this.handleSelectSortMethod.bind(this)}
                                 posts={this.getSortedPosts().list.filter(post => post.category === selectedCategory)}
+                                history={history}
                             /> 
                         }
                     </Grid>

@@ -11,10 +11,22 @@ import {
 import { formatDate } from '../utils/utility';
 
 class PCPost extends Component {
+
+    handleClick(event) {
+
+        event.preventDefault();
+
+        const { history, post } = this.props;
+
+        history.push(`${post.category}/${post.id}`);
+    }
+
     render() {
 
-        const { post } = this.props;
-        
+        const { 
+            post
+        } = this.props;
+
         return (
             <div>
                 <Card 
@@ -35,7 +47,12 @@ class PCPost extends Component {
                         </Typography>
                     </CardContent>
                     <CardActions>
-                        <Button size="small">Learn More</Button>
+                        <Button 
+                            size="small"
+                            onClick={this.handleClick.bind(this)}
+                        >
+                            Learn More 
+                        </Button>
                     </CardActions>
                 </Card>
             </div>

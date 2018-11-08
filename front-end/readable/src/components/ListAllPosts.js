@@ -10,6 +10,8 @@ import {
     MenuItem
 } from '@material-ui/core';
 
+import { Link } from 'react-router-dom';
+
 import { sortMethodMenuItems } from '../constants/shared';
 
 class ListAllPosts extends Component {
@@ -64,7 +66,14 @@ class ListAllPosts extends Component {
                 <List className="app-flex-container">
                     {this.props.posts.map(post => (
                         <ListItem button key={post.id}>
-                            {post.title}
+                            <Link
+                                to={{
+                                    pathname: `${post.category}/${post.id}`,
+                                }}
+                                className="app-link"
+                            >
+                                {post.title}
+                            </Link>
                         </ListItem>
                     ))}
                 </List>

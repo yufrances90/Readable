@@ -10,6 +10,7 @@ import CustomizedNavbar from './components/CustomizedNavbar';
 import PHome from './pages/PHome';
 import PCategory from './pages/PCategory';
 import PCreate from './pages/PCreate';
+import PPost from './pages/PPost';
 
 class App extends Component {
 
@@ -20,10 +21,9 @@ class App extends Component {
                     <CustomizedNavbar />
                     <div style={{marginTop: '2em'}}>
                         <Route exact path="/" component={PHome} />
-                        <Route path="/:category" component={PCategory} />
-                        <Route path="/add" component={PCreate} />
-                        {/* TODO:  */}
-                        {/* <Route path="/:category/:post_id" component={PPost} /> */}
+                        <Route exact path="/:category/:post_id" component={PPost} />
+                        <Route exact path="/:category" component={PCategory} />
+                        <Route exact path="/add" component={PCreate} />
                     </div>
                 </div>
             </Router>

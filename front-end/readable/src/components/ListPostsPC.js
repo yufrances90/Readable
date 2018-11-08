@@ -16,7 +16,8 @@ class ListPostsPC extends Component {
         const { 
             selectedCategory,
             handleSelectSortMethod,
-            posts
+            posts,
+            history
         } = this.props;
 
         return (
@@ -42,6 +43,7 @@ class ListPostsPC extends Component {
                     <div style={{paddingTop: '1em', paddingLeft: '1em'}}>
                         <ListPostsPCBody
                             posts={posts} 
+                            history={history}
                         />
                     </div>
                 }

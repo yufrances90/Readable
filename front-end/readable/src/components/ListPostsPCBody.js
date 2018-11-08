@@ -11,7 +11,8 @@ class ListPostsPCBody extends Component {
     render() {
 
         const {
-            posts
+            posts,
+            history
         } = this.props;
 
         return (
@@ -25,7 +26,7 @@ class ListPostsPCBody extends Component {
                     <List>
                         {posts.map(post => (
                             <ListItem key={post.id}>
-                                <PCPost post={post} />
+                                <PCPost post={post} history={history} />
                             </ListItem>
                         ))}
                     </List>

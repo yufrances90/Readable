@@ -23,9 +23,7 @@ class PCPost extends Component {
 
     render() {
 
-        const { 
-            post
-        } = this.props;
+        const { post } = this.props;
 
         return (
             <div>

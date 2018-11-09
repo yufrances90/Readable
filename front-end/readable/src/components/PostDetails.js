@@ -8,6 +8,8 @@ import {
 
 import { formatDate } from '../utils/utility';
 
+import ListComments from './ListComments';
+
 class PostDetails extends Component {
     render() {
 
@@ -22,7 +24,6 @@ class PostDetails extends Component {
                         <Typography variant="h3">
                             {post.title}
                         </Typography>
-                        {/* <Divider /> */}
                         <Typography variant="body1" color="textSecondary">
                             {post.author} |  {formatDate(post.timestamp)} | 
                             comments: {post.commentCount} | 
@@ -32,6 +33,11 @@ class PostDetails extends Component {
                         <p>
                             {post.body}
                         </p>
+                        <br />
+                        <br />
+                        <br />
+                        <br />
+                        <ListComments />
                     </Grid>
                     <Grid item xs={3}>
                     </Grid>

@@ -19,7 +19,8 @@ class PostDetails extends Component {
 
         const { 
             post,
-            handleUpdatePostByID 
+            handleUpdatePostByID,
+            handleDeletePostByID 
         } = this.props;
 
         return (
@@ -36,7 +37,9 @@ class PostDetails extends Component {
                         body={post.body}
                         handleUpdatePostByID={handleUpdatePostByID}
                     />
-                    <IconButton>
+                    <IconButton
+                        onClick={event => handleDeletePostByID(event, post.id)}
+                    >
                         <Delete />
                     </IconButton>
                 </Typography>

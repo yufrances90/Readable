@@ -4,13 +4,13 @@ import { connect } from 'react-redux';
 
 import {
     LinearProgress,
-    Grid,
-    Button
+    Grid
 } from '@material-ui/core';
 
 import { 
     get as getPostById,
-    edit
+    edit,
+    deleteById
 } from '../api/posts';
 import { getByPostId as getCommentsByPostId } from '../api/comments';
 import { getInitialData } from '../api/shared';
@@ -18,7 +18,8 @@ import { getAllCategories } from '../actions/categories';
 import { 
     viewPostDetailsByID, 
     getAllPosts,
-    editPostDetailsByID 
+    editPostDetailsByID,
+    deletePostByID 
 } from '../actions/posts';
 import { getCommentsByPostID } from '../actions/comments';
 
@@ -44,6 +45,13 @@ class PPost extends Component {
         this.props.handleUpdatePost(this.props.post.id, title, body);
     }
 
+    handleDeletePostByID(event, postId) {
+
+        event.preventDefault();
+
+        this.props.handleDeletePost(postId);
+    }
+
     render() {
 
         const { post, comments } = this.props;
@@ -63,6 +71,7 @@ class PPost extends Component {
                         <PostDetails 
                             post={post}
                             handleUpdatePostByID={this.handleUpdatePostByID.bind(this)}
+                            handleDeletePostByID={this.handleDeletePostByID.bind(this)}
                         />
                         <br />
                         <br />
@@ -104,6 +113,12 @@ function mapDispatchToProps(dispatch) {
             edit(postId, title, body)
             .then((post) => {
                 dispatch(editPostDetailsByID(post));
+            })
+        },
+        handleDeletePost: (postId) => {
+            deleteById(postId)
+            .then(post => {
+                dispatch(deletePostByID(post.id))
             })
         }
     };

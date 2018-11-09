@@ -3,7 +3,8 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
 import {
-    LinearProgress
+    LinearProgress,
+    Grid
 } from '@material-ui/core';
 
 import { get as getPostById } from '../api/posts';
@@ -14,6 +15,7 @@ import { viewPostDetailsByID, getAllPosts } from '../actions/posts';
 import { getCommentsByPostID } from '../actions/comments';
 
 import PostDetails from '../components/PostDetails';
+import ListComments from '../components/ListComments';
 
 class PPost extends Component {
 
@@ -29,7 +31,9 @@ class PPost extends Component {
 
     render() {
 
-        const { post } = this.props;
+        const { post, comments } = this.props;
+
+        const commentList = comments.list;
 
         if (!post) {
             return <LinearProgress />
@@ -37,16 +41,30 @@ class PPost extends Component {
 
         return (
             <div>
-                <PostDetails post={post} />
+                <Grid container>
+                    <Grid item xs={3}>
+                    </Grid>
+                    <Grid item xs={6}>
+                        <PostDetails post={post} />
+                        <br />
+                        <br />
+                        <br />
+                        <br />
+                        <ListComments comments={commentList} />
+                    </Grid>
+                    <Grid item xs={3}>
+                    </Grid>
+                </Grid>
             </div>
         );
     }
 }
 
-function mapStateToProps({ posts }) {
+function mapStateToProps({ posts, comments }) {
 
     return {
-        post: posts.post
+        post: posts.post,
+        comments
     };
 }
 

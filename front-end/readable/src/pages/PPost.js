@@ -11,6 +11,8 @@ import { getInitialData } from '../api/shared';
 import { getAllCategories } from '../actions/categories';
 import { viewPostDetailsByID, getAllPosts } from '../actions/posts';
 
+import PostDetails from '../components/PostDetails';
+
 class PPost extends Component {
 
     componentDidMount() {
@@ -32,7 +34,7 @@ class PPost extends Component {
 
         return (
             <div>
-                Hello from PPost
+                <PostDetails post={post} />
             </div>
         );
     }

@@ -25,7 +25,10 @@ export default function posts(state: IPostState = initialState, action: PostActi
                 }
             };
         case PostActionTypes.VIEW_POST_DETAILS_BY_ID:
-            return state.list[action.id];
+            return {
+                ...state,
+                post: action.post
+            };
         case PostActionTypes.VOTE_POST_BY_ID:
             return {
                 list: {

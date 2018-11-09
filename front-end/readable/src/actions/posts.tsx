@@ -19,7 +19,7 @@ export interface IAddNewPost {
 
 export interface IViewPostDetailsByID {
     type: PostActionTypes.VIEW_POST_DETAILS_BY_ID;
-    id: string
+    post: IPost
 }
 
 export interface IVotePostByID {
@@ -69,10 +69,10 @@ export function addNewPost(post: IPost): IAddNewPost {
     };
 }
 
-export function viewPostDetailsByID(id: string): IViewPostDetailsByID {
+export function viewPostDetailsByID(post: IPost): IViewPostDetailsByID {
     return {
         type: PostActionTypes.VIEW_POST_DETAILS_BY_ID,
-        id
+        post
     };
 }
 

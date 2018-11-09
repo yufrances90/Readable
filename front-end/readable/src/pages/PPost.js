@@ -7,9 +7,11 @@ import {
 } from '@material-ui/core';
 
 import { get as getPostById } from '../api/posts';
+import { getByPostId as getCommentsByPostId } from '../api/comments';
 import { getInitialData } from '../api/shared';
 import { getAllCategories } from '../actions/categories';
 import { viewPostDetailsByID, getAllPosts } from '../actions/posts';
+import { getCommentsByPostID } from '../actions/comments';
 
 import PostDetails from '../components/PostDetails';
 
@@ -22,6 +24,7 @@ class PPost extends Component {
         const { postId } = location.state;
 
         this.props.handleGetPost(postId);
+        this.props.handleGetCommentsByPostId(postId);
     }
 
     render() {
@@ -54,6 +57,13 @@ function mapDispatchToProps(dispatch) {
             .then((post) => {
                 dispatch(viewPostDetailsByID(post));
             }) 
+        },
+        handleGetCommentsByPostId: (postId) => {
+            getCommentsByPostId(postId)
+            .then((comments) => {
+                console.log(comments);
+                // dispatch(getCommentsByPostID(comments));
+            })
         }
     };
 }

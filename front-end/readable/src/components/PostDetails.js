@@ -6,13 +6,15 @@ import {
     IconButton
 } from '@material-ui/core';
 import { 
-    Edit,
     Delete 
 } from '@material-ui/icons';
 
 import { formatDate } from '../utils/utility';
 
+import EditPostModal from './EditPostModal';
+
 class PostDetails extends Component {
+
     render() {
 
         const { post } = this.props;
@@ -26,9 +28,10 @@ class PostDetails extends Component {
                     {post.author} |  {formatDate(post.timestamp)} | 
                     comments: {post.commentCount} | 
                     votes: {post.voteScore}
-                    <IconButton>
-                        <Edit />
-                    </IconButton>
+                    <EditPostModal
+                        title={post.title}
+                        body={post.body} 
+                    />
                     <IconButton>
                         <Delete />
                     </IconButton>

@@ -47,7 +47,7 @@ class NewCategoryModal extends Component {
                         open={this.state.open}
                         onClose={this.handleClose}
                     >
-                        <div className="app-new-category-modal">
+                        <div className="app-modal">
                             <NewCategoryForm 
                                 categories={categories}
                                 handleClickCreateBtn={handleClickCreateBtn}

@@ -2,8 +2,13 @@ import React, { Component } from 'react';
 
 import {
     Typography, 
-    Divider
+    Divider,
+    IconButton
 } from '@material-ui/core';
+import { 
+    Edit,
+    Delete 
+} from '@material-ui/icons';
 
 import { formatDate } from '../utils/utility';
 
@@ -21,6 +26,12 @@ class PostDetails extends Component {
                     {post.author} |  {formatDate(post.timestamp)} | 
                     comments: {post.commentCount} | 
                     votes: {post.voteScore}
+                    <IconButton>
+                        <Edit />
+                    </IconButton>
+                    <IconButton>
+                        <Delete />
+                    </IconButton>
                 </Typography>
                 <Divider />
                 <p>

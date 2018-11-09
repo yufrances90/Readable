@@ -23,6 +23,8 @@ class EditPostForm extends Component {
 
         const { title, body } = this.state;
 
+        const { handleUpdatePostByID } = this.props;
+
         return (
             <form>
                 <Typography variant="h6">
@@ -54,6 +56,7 @@ class EditPostForm extends Component {
                     variant="outlined" 
                     color="primary" 
                     style={{ left: '43%' }}
+                    onClick={event => handleUpdatePostByID(event, title, body)}
                 >
                     Submit
                 </Button>

@@ -17,7 +17,10 @@ class PostDetails extends Component {
 
     render() {
 
-        const { post } = this.props;
+        const { 
+            post,
+            handleUpdatePostByID 
+        } = this.props;
 
         return (
             <div>
@@ -30,7 +33,8 @@ class PostDetails extends Component {
                     votes: {post.voteScore}
                     <EditPostModal
                         title={post.title}
-                        body={post.body} 
+                        body={post.body}
+                        handleUpdatePostByID={handleUpdatePostByID}
                     />
                     <IconButton>
                         <Delete />

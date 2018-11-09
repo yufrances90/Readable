@@ -4,14 +4,22 @@ import { connect } from 'react-redux';
 
 import {
     LinearProgress,
-    Grid
+    Grid,
+    Button
 } from '@material-ui/core';
 
-import { get as getPostById } from '../api/posts';
+import { 
+    get as getPostById,
+    edit
+} from '../api/posts';
 import { getByPostId as getCommentsByPostId } from '../api/comments';
 import { getInitialData } from '../api/shared';
 import { getAllCategories } from '../actions/categories';
-import { viewPostDetailsByID, getAllPosts } from '../actions/posts';
+import { 
+    viewPostDetailsByID, 
+    getAllPosts,
+    editPostDetailsByID 
+} from '../actions/posts';
 import { getCommentsByPostID } from '../actions/comments';
 
 import PostDetails from '../components/PostDetails';
@@ -27,6 +35,13 @@ class PPost extends Component {
 
         this.props.handleGetPost(postId);
         this.props.handleGetCommentsByPostId(postId);
+    }
+
+    handleUpdatePostByID(event, title, body) {
+
+        event.preventDefault();
+
+        this.props.handleUpdatePost(this.props.post.id, title, body);
     }
 
     render() {
@@ -45,7 +60,10 @@ class PPost extends Component {
                     <Grid item xs={3}>
                     </Grid>
                     <Grid item xs={6}>
-                        <PostDetails post={post} />
+                        <PostDetails 
+                            post={post}
+                            handleUpdatePostByID={this.handleUpdatePostByID.bind(this)}
+                        />
                         <br />
                         <br />
                         <br />
@@ -80,6 +98,12 @@ function mapDispatchToProps(dispatch) {
             getCommentsByPostId(postId)
             .then((comments) => {
                 dispatch(getCommentsByPostID(postId, comments));
+            })
+        },
+        handleUpdatePost: (postId, title, body) => {
+            edit(postId, title, body)
+            .then((post) => {
+                dispatch(editPostDetailsByID(post));
             })
         }
     };

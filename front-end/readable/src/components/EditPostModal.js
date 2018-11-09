@@ -30,7 +30,11 @@ class EditPostModal extends Component {
 
         const { open } = this.state;
 
-        const { title, body } = this.props;
+        const { 
+            title, 
+            body, 
+            handleUpdatePostByID 
+        } = this.props;
 
         return (
             <Fragment>
@@ -45,6 +49,7 @@ class EditPostModal extends Component {
                         <EditPostForm 
                             title={title}
                             body={body}
+                            handleUpdatePostByID={handleUpdatePostByID}
                         />
                     </div>
                 </Modal>

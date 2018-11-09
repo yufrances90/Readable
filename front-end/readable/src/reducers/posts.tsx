@@ -45,7 +45,8 @@ export default function posts(state: IPostState = initialState, action: PostActi
                 list: {
                     ...state.list,
                     [action.post.id]: action.post
-                }
+                },
+                post: action.post
             }
         case PostActionTypes.DELETE_POST_BY_ID:
             return {

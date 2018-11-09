@@ -5,52 +5,57 @@ import { PostActionTypes } from '../constants/posts';
 import { VoteOptions } from '../constants/shared';
 
 const initialState: ICommentState = {
-    comments: []
+    list: []
 }
 
 export default function comments(state: ICommentState = initialState, action: CommentAction) {
     switch(action.type) {
         case CommentActionTypes.GET_COMMENTS_BY_POST_ID:
-            return state.comments.filter(comment => comment.parentId === action.postID);
+            return {
+                list: action.comments.filter(comment => comment.parentId === action.postID)
+            };
         case CommentActionTypes.ADD_NEW_COMMENT:
             return {
-                comments: {
-                    ...state.comments,
+                list: {
+                    ...state.list,
                     [action.comment.id]: action.comment
                 }
             };
         case CommentActionTypes.VIEW_COMMENT_DETAILS_BY_ID:
-            return state.comments[action.id];
+            return {
+                ...state,
+                comment: action.comment
+            };
         case CommentActionTypes.VOTE_COMMENT_BY_ID:
             return {
                 comments: {
-                    ...state.comments,
+                    ...state.list,
                     [action.id]: {
-                        ...state.comments[action.id],
+                        ...state.list[action.id],
                         voteScore: (action.option === VoteOptions.UP_VOTE)? 
-                            state.comments[action.id].voteScore + 1 : state.comments[action.id].voteScore - 1
+                            state.list[action.id].voteScore + 1 : state.list[action.id].voteScore - 1
                     }
                 }
             }
         case CommentActionTypes.EDIT_COMMENT_DETAILS_BY_ID:
             return {
                 comments: {
-                    ...state.comments,
+                    ...state.list,
                     [action.comment.id]: action.comment
                 }
             };
         case CommentActionTypes.DELETE_COMMENT_BY_ID:
             return {
                 comments: {
-                    ...state.comments,
+                    ...state.list,
                     [action.id]: {
-                        ...state.comments[action.id],
+                        ...state.list[action.id],
                         deleted: true
                     }
                 }
             }
         case PostActionTypes.DELETE_POST_BY_ID:
-            return state.comments.map(comment => {
+            return state.list.map(comment => {
                 if (comment.parentId === action.id) {
                     return {
                         ...comment,

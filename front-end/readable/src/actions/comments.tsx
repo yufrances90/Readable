@@ -15,7 +15,7 @@ export interface IAddNewComment {
 
 export interface IViewCommentDetailsByID {
     type: CommentActionTypes.VIEW_COMMENT_DETAILS_BY_ID;
-    id: string;
+    comment: IComment;
 }
 
 export interface IVoteCommentByID {
@@ -60,10 +60,10 @@ export function addNewComment(comment: IComment): IAddNewComment {
     };
 }
 
-export function viewCommentDetailsByID(id: string): IViewCommentDetailsByID {
+export function viewCommentDetailsByID(comment: IComment): IViewCommentDetailsByID {
     return {
         type: CommentActionTypes.VIEW_COMMENT_DETAILS_BY_ID,
-        id
+        comment
     };
 }
 

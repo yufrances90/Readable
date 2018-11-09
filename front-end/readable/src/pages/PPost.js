@@ -61,8 +61,7 @@ function mapDispatchToProps(dispatch) {
         handleGetCommentsByPostId: (postId) => {
             getCommentsByPostId(postId)
             .then((comments) => {
-                console.log(comments);
-                // dispatch(getCommentsByPostID(comments));
+                dispatch(getCommentsByPostID(postId, comments));
             })
         }
     };

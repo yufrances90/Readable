@@ -20,7 +20,7 @@ class ListComments extends Component {
                 <Divider />
                 <div style={{marginTop: '1em'}}>
                     {
-                        comments.length <= 0 &&
+                        comments && comments.length <= 0 &&
                         <p>There is no comment for this post at the moment.</p>
                     }
                     {comments.map(comment => (

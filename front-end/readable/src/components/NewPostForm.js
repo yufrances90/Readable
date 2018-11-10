@@ -113,8 +113,9 @@ class NewPostForm extends Component {
                 <br />
                 <Button
                     variant="outlined"
-                    style={{ left: '35%' }}
+                    style={{left: '35%'}}
                     onClick={this.handleClick.bind(this)}
+                    disabled={selectedCategory === ''}
                 >
                     Create 
                 </Button>

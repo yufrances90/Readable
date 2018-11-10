@@ -23,7 +23,7 @@ class ListComments extends Component {
                         comments && comments.length <= 0 &&
                         <p>There is no comment for this post at the moment.</p>
                     }
-                    {comments.map(comment => (
+                    {comments && comments.map(comment => (
                         <PPComment comment={comment} key={comment.id} />
                     ))}
                 </div>

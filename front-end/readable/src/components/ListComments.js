@@ -6,6 +6,7 @@ import {
 } from '@material-ui/core';
 
 import PPComment from './PPComment';
+import AddCommentModal from './AddCommentModal';
 
 class ListComments extends Component {
     render() {
@@ -16,6 +17,7 @@ class ListComments extends Component {
             <div>
                 <Typography variant="h5">
                     Comments
+                    <AddCommentModal />
                 </Typography>
                 <Divider />
                 <div style={{marginTop: '1em'}}>

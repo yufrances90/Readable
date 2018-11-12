@@ -11,13 +11,20 @@ import AddCommentModal from './AddCommentModal';
 class ListComments extends Component {
     render() {
 
-        const { comments } = this.props;
+        const { 
+            comments, 
+            handleAddNewComment,
+            postId 
+        } = this.props;
 
         return (
             <div>
                 <Typography variant="h5">
                     Comments
-                    <AddCommentModal />
+                    <AddCommentModal 
+                        handleAddNewComment={handleAddNewComment}
+                        postId={postId} 
+                    />
                 </Typography>
                 <Divider />
                 <div style={{marginTop: '1em'}}>

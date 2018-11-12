@@ -24,6 +24,8 @@ class AddCommentForm extends Component {
 
         const { author, body } = this.state;
 
+        const { handleAddNewComment, postId } = this.props;
+
         return (
             <form>
                 <Typography variant="h6">
@@ -53,6 +55,7 @@ class AddCommentForm extends Component {
                     variant="outlined" 
                     color="primary" 
                     style={{ left: '43%' }}
+                    onClick={event => handleAddNewComment(event, postId, body, author)}
                 >
                     Submit
                 </Button>

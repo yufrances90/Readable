@@ -4,8 +4,7 @@ import { connect } from 'react-redux';
 
 import {
     LinearProgress,
-    Grid,
-    Button
+    Grid
 } from '@material-ui/core';
 
 import { 
@@ -95,14 +94,13 @@ class PPost extends Component {
                         <br />
                         <br />
                         <br />
-                        <ListComments comments={commentList} />
+                        <ListComments 
+                            comments={commentList} 
+                            handleAddNewComment={this.handleAddNewComment.bind(this)}
+                            postId={post.id}
+                        />
                     </Grid>
                     <Grid item xs={3}>
-                        <Button 
-                            onClick={event => this.handleAddNewComment(event, "1111", "hello", "world")}
-                        >
-                            test
-                        </Button>
                     </Grid>
                 </Grid>
             </div>
@@ -148,7 +146,7 @@ function mapDispatchToProps(dispatch) {
             addComment(comment)
             .then((data) => {
                 dispatch(addNewComment(data));
-            });
+            })
         }
     };
 }

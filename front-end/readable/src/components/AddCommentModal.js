@@ -31,6 +31,8 @@ class AddCommentModal extends Component {
 
         const { open } = this.state;
 
+        const { handleAddNewComment, postId } = this.props;
+
         return (
             <Fragment>
                 <IconButton onClick={this.handleOpen.bind(this)}>
@@ -41,7 +43,10 @@ class AddCommentModal extends Component {
                     onClose={this.handleClose.bind(this)}
                 >
                     <div className="app-modal">
-                        <AddCommentForm />
+                        <AddCommentForm 
+                            handleAddNewComment={handleAddNewComment}
+                            postId={postId} 
+                        />
                     </div>
                 </Modal>
             </Fragment>

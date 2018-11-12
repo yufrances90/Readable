@@ -16,10 +16,7 @@ export default function comments(state: ICommentState = initialState, action: Co
             };
         case CommentActionTypes.ADD_NEW_COMMENT:
             return {
-                list: {
-                    ...state.list,
-                    [action.comment.id]: action.comment
-                }
+                list: state.list.concat([action.comment])
             };
         case CommentActionTypes.VIEW_COMMENT_DETAILS_BY_ID:
             return {

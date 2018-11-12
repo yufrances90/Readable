@@ -19,10 +19,7 @@ export default function posts(state: IPostState = initialState, action: PostActi
             };
         case PostActionTypes.ADD_NEW_POST:
             return {
-                list: {
-                    ...state.list,
-                    [action.post.id]: action.post
-                }
+                list: state.list.concat([action.post])
             };
         case PostActionTypes.VIEW_POST_DETAILS_BY_ID:
             return {

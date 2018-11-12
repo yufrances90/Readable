@@ -22,6 +22,7 @@ class PPComment extends Component {
                     >
                         <Typography variant="body1" color="textSecondary">
                             {comment.author} |  {formatDate(comment.timestamp)} | 
+                            <br />
                             votes: {comment.voteScore}
                         </Typography>
                     </Grid>

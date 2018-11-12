@@ -4,7 +4,8 @@ import { connect } from 'react-redux';
 
 import {
     LinearProgress,
-    Grid
+    Grid,
+    Button
 } from '@material-ui/core';
 
 import { 
@@ -12,7 +13,10 @@ import {
     edit,
     deleteById
 } from '../api/posts';
-import { getByPostId as getCommentsByPostId } from '../api/comments';
+import { 
+    getByPostId as getCommentsByPostId,
+    add as addComment 
+} from '../api/comments';
 import { getInitialData } from '../api/shared';
 import { getAllCategories } from '../actions/categories';
 import { 
@@ -21,7 +25,12 @@ import {
     editPostDetailsByID,
     deletePostByID 
 } from '../actions/posts';
-import { getCommentsByPostID } from '../actions/comments';
+import { 
+    getCommentsByPostID,
+    addNewComment 
+} from '../actions/comments';
+
+import { createNewComment } from '../utils/helpers';
 
 import PostDetails from '../components/PostDetails';
 import ListComments from '../components/ListComments';
@@ -52,6 +61,15 @@ class PPost extends Component {
         this.props.handleDeletePost(postId);
     }
 
+    handleAddNewComment(event, parentId, body, author) {
+
+        event.preventDefault();
+
+        const comment = createNewComment(parentId, body, author);
+
+        this.props.handleAddNewCommentWithPostId(comment);
+    }
+
     render() {
 
         const { post, comments } = this.props;
@@ -80,6 +98,11 @@ class PPost extends Component {
                         <ListComments comments={commentList} />
                     </Grid>
                     <Grid item xs={3}>
+                        <Button 
+                            onClick={event => this.handleAddNewComment(event, "1111", "hello", "world")}
+                        >
+                            test
+                        </Button>
                     </Grid>
                 </Grid>
             </div>
@@ -117,9 +140,15 @@ function mapDispatchToProps(dispatch) {
         },
         handleDeletePost: (postId) => {
             deleteById(postId)
-            .then(post => {
-                dispatch(deletePostByID(post.id))
+            .then((post) => {
+                dispatch(deletePostByID(post.id));
             })
+        },
+        handleAddNewCommentWithPostId: (comment) => {
+            addComment(comment)
+            .then((data) => {
+                dispatch(addNewComment(data));
+            });
         }
     };
 }

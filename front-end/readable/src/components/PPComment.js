@@ -2,12 +2,42 @@ import React, { Component } from 'react';
 
 import { 
     Typography,
-    Grid 
+    Grid,
+    IconButton 
 } from '@material-ui/core';
+import {
+    Edit,
+    Delete,
+    FavoriteBorder,
+    Favorite
+} from '@material-ui/icons';
 
 import { formatDate } from '../utils/utility';
 
 class PPComment extends Component {
+
+    state = {
+        liked: false
+    }
+
+    handleToggleFavoriteButton(event) {
+        
+        event.preventDefault();
+
+        this.setState((prevState) => {
+            return {
+                liked: !prevState.liked
+            };
+        })
+    }
+
+    determineVoteIcon() {
+
+        const { liked } = this.state;
+
+        return liked? <Favorite /> : <FavoriteBorder />
+    }
+
     render() {
 
         const { comment } = this.props;
@@ -33,6 +63,19 @@ class PPComment extends Component {
                         <Typography variant="body2">
                             {comment.body}
                         </Typography>
+                        <span style={{float: 'right'}}>
+                            <IconButton>
+                                <Edit />
+                            </IconButton>
+                            <IconButton>
+                                <Delete />
+                            </IconButton>
+                            <IconButton
+                                onClick={this.handleToggleFavoriteButton.bind(this)}
+                            >
+                                {this.determineVoteIcon()}
+                            </IconButton>
+                        </span>
                     </Grid>
                 </Grid>
                 <br />

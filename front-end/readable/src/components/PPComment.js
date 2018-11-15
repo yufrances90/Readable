@@ -3,13 +3,15 @@ import React, { Component } from 'react';
 import { 
     Typography,
     Grid,
-    IconButton 
+    IconButton,
+    TextField 
 } from '@material-ui/core';
 import {
     Edit,
     Delete,
     FavoriteBorder,
-    Favorite
+    Favorite,
+    Done
 } from '@material-ui/icons';
 
 import { formatDate } from '../utils/utility';
@@ -17,7 +19,9 @@ import { formatDate } from '../utils/utility';
 class PPComment extends Component {
 
     state = {
-        liked: false
+        liked: false,
+        enableEdit: false,
+        commentBody: this.props.comment.body
     }
 
     handleToggleFavoriteButton(event) {
@@ -38,9 +42,28 @@ class PPComment extends Component {
         return liked? <Favorite /> : <FavoriteBorder />
     }
 
+    handleChangeEditMode(event) {
+        
+        event.preventDefault();
+
+        this.setState((prevState) => {
+            return {
+                enableEdit: !prevState.enableEdit
+            }
+        })
+    }
+
+    handleUpdateComment(event) {
+        this.setState({
+            commentBody: event.target.value
+        });
+    }
+
     render() {
 
         const { comment } = this.props;
+
+        const { enableEdit, commentBody } = this.state;
 
         return (
             <div>
@@ -60,13 +83,39 @@ class PPComment extends Component {
                         item xs={8} 
                         style={{paddingLeft: '1em'}}
                     >
-                        <Typography variant="body2">
-                            {comment.body}
-                        </Typography>
+                        {
+                            !enableEdit && 
+                            <Typography variant="body2">
+                                {comment.body}
+                            </Typography>
+                        }
+                        {
+                            enableEdit && 
+                            <TextField 
+                                value={commentBody}
+                                style={{width: '100%'}}
+                                multiline
+                                rows={5} 
+                                onChange={this.handleUpdateComment.bind(this)}
+                            />
+                        }
                         <span style={{float: 'right'}}>
-                            <IconButton>
-                                <Edit />
-                            </IconButton>
+                            {
+                                !enableEdit && 
+                                <IconButton
+                                    onClick={this.handleChangeEditMode.bind(this)}
+                                >
+                                    <Edit />
+                                </IconButton>
+                            }
+                            {
+                                enableEdit && 
+                                <IconButton
+                                    onClick={this.handleChangeEditMode.bind(this)}
+                                >
+                                    <Done />
+                                </IconButton>
+                            }
                             <IconButton>
                                 <Delete />
                             </IconButton>

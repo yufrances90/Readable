@@ -119,6 +119,7 @@ class PPost extends Component {
                             handleAddNewComment={this.handleAddNewComment.bind(this)}
                             postId={post.id}
                             handleClickCommentUpdate={this.handleClickCommentUpdate.bind(this)}
+                            handleDeleteButtonClick={this.handleDeleteButtonClick.bind(this)}
                         />
                     </Grid>
                     <Grid item xs={3}>

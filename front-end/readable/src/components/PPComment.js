@@ -68,7 +68,7 @@ class PPComment extends Component {
 
     render() {
 
-        const { comment } = this.props;
+        const { comment, handleDeleteButtonClick } = this.props;
 
         const { enableEdit, commentBody } = this.state;
 
@@ -123,7 +123,9 @@ class PPComment extends Component {
                                     <Done />
                                 </IconButton>
                             }
-                            <IconButton>
+                            <IconButton
+                                onClick={event => handleDeleteButtonClick(event, comment.id)}
+                            >
                                 <Delete />
                             </IconButton>
                             <IconButton

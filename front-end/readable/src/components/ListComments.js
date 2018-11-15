@@ -15,7 +15,8 @@ class ListComments extends Component {
             comments, 
             handleAddNewComment,
             postId,
-            handleClickCommentUpdate 
+            handleClickCommentUpdate,
+            handleDeleteButtonClick 
         } = this.props;
 
         return (
@@ -37,7 +38,8 @@ class ListComments extends Component {
                         <PPComment 
                             comment={comment} 
                             key={comment.id}
-                            handleClickCommentUpdate={handleClickCommentUpdate} 
+                            handleClickCommentUpdate={handleClickCommentUpdate}
+                            handleDeleteButtonClick={handleDeleteButtonClick} 
                         />
                     ))}
                 </div>

@@ -4,7 +4,8 @@ import { connect } from 'react-redux';
 
 import {
     LinearProgress,
-    Grid
+    Grid,
+    Button
 } from '@material-ui/core';
 
 import { 
@@ -14,7 +15,8 @@ import {
 } from '../api/posts';
 import { 
     getByPostId as getCommentsByPostId,
-    add as addComment 
+    add as addComment,
+    edit as editComment 
 } from '../api/comments';
 import { getInitialData } from '../api/shared';
 import { getAllCategories } from '../actions/categories';
@@ -26,7 +28,8 @@ import {
 } from '../actions/posts';
 import { 
     getCommentsByPostID,
-    addNewComment 
+    addNewComment,
+    editCommentDetailsByID 
 } from '../actions/comments';
 
 import { createNewComment } from '../utils/helpers';
@@ -69,6 +72,17 @@ class PPost extends Component {
         this.props.handleAddNewCommentWithPostId(comment);
     }
 
+    handleClickCommentUpdate(event, commentId, commentBody) {
+
+        event.preventDefault();
+
+        const timestamp = Date.now();
+
+        const { handleUpdateComment } = this.props;
+
+        this.props.handleUpdateComment(commentId, timestamp, commentBody);
+    }
+
     render() {
 
         const { post, comments } = this.props;
@@ -101,6 +115,9 @@ class PPost extends Component {
                         />
                     </Grid>
                     <Grid item xs={3}>
+                        <Button onClick={this.handleClickCommentUpdate.bind(this)}>
+                            test
+                        </Button>
                     </Grid>
                 </Grid>
             </div>
@@ -146,6 +163,12 @@ function mapDispatchToProps(dispatch) {
             addComment(comment)
             .then((data) => {
                 dispatch(addNewComment(data));
+            })
+        },
+        handleUpdateComment: (commentId, timestamp, commentBody) => {
+            editComment(commentId, timestamp, commentBody)
+            .then((data) => {
+                dispatch(editCommentDetailsByID(data));
             })
         }
     };

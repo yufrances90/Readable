@@ -36,10 +36,8 @@ export default function comments(state: ICommentState = initialState, action: Co
             }
         case CommentActionTypes.EDIT_COMMENT_DETAILS_BY_ID:
             return {
-                comments: {
-                    ...state.list,
-                    [action.comment.id]: action.comment
-                }
+                ...state,
+                list: state.list.map(comment => (comment.id !== action.comment.id)? comment : action.comment)
             };
         case CommentActionTypes.DELETE_COMMENT_BY_ID:
             return {

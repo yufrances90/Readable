@@ -59,6 +59,13 @@ class PPComment extends Component {
         });
     }
 
+    handleDoneButtonClick(event) {
+
+        this.handleChangeEditMode(event);
+
+        this.props.handleClickCommentUpdate(this.props.comment.id, this.state.commentBody);
+    }
+
     render() {
 
         const { comment } = this.props;
@@ -111,7 +118,7 @@ class PPComment extends Component {
                             {
                                 enableEdit && 
                                 <IconButton
-                                    onClick={this.handleChangeEditMode.bind(this)}
+                                    onClick={this.handleDoneButtonClick.bind(this)}
                                 >
                                     <Done />
                                 </IconButton>

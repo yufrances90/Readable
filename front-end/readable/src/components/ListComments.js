@@ -14,7 +14,8 @@ class ListComments extends Component {
         const { 
             comments, 
             handleAddNewComment,
-            postId 
+            postId,
+            handleClickCommentUpdate 
         } = this.props;
 
         return (
@@ -33,7 +34,11 @@ class ListComments extends Component {
                         <p>There is no comment for this post at the moment.</p>
                     }
                     {comments && comments.map(comment => (
-                        <PPComment comment={comment} key={comment.id} />
+                        <PPComment 
+                            comment={comment} 
+                            key={comment.id}
+                            handleClickCommentUpdate={handleClickCommentUpdate} 
+                        />
                     ))}
                 </div>
             </div>

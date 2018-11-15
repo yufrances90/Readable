@@ -72,9 +72,7 @@ class PPost extends Component {
         this.props.handleAddNewCommentWithPostId(comment);
     }
 
-    handleClickCommentUpdate(event, commentId, commentBody) {
-
-        event.preventDefault();
+    handleClickCommentUpdate(commentId, commentBody) {
 
         const timestamp = Date.now();
 
@@ -112,6 +110,7 @@ class PPost extends Component {
                             comments={commentList} 
                             handleAddNewComment={this.handleAddNewComment.bind(this)}
                             postId={post.id}
+                            handleClickCommentUpdate={this.handleClickCommentUpdate.bind(this)}
                         />
                     </Grid>
                     <Grid item xs={3}>

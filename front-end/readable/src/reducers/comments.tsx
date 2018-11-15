@@ -12,10 +12,12 @@ export default function comments(state: ICommentState = initialState, action: Co
     switch(action.type) {
         case CommentActionTypes.GET_COMMENTS_BY_POST_ID:
             return {
+                ...state,
                 list: action.comments.filter(comment => comment.parentId === action.postID)
             };
         case CommentActionTypes.ADD_NEW_COMMENT:
             return {
+                ...state,
                 list: state.list.concat([action.comment])
             };
         case CommentActionTypes.VIEW_COMMENT_DETAILS_BY_ID:
@@ -41,13 +43,8 @@ export default function comments(state: ICommentState = initialState, action: Co
             };
         case CommentActionTypes.DELETE_COMMENT_BY_ID:
             return {
-                comments: {
-                    ...state.list,
-                    [action.id]: {
-                        ...state.list[action.id],
-                        deleted: true
-                    }
-                }
+                ...state,
+                list: state.list.filter(comment => comment.id !== action.id)
             }
         case PostActionTypes.DELETE_POST_BY_ID:
             return state.list.map(comment => {

@@ -15,7 +15,8 @@ import {
 import { 
     getByPostId as getCommentsByPostId,
     add as addComment,
-    edit as editComment 
+    edit as editComment,
+    deleteById as deleteCommentById
 } from '../api/comments';
 import { getInitialData } from '../api/shared';
 import { getAllCategories } from '../actions/categories';
@@ -28,7 +29,8 @@ import {
 import { 
     getCommentsByPostID,
     addNewComment,
-    editCommentDetailsByID 
+    editCommentDetailsByID,
+    deleteCommentByID 
 } from '../actions/comments';
 
 import { createNewComment } from '../utils/helpers';
@@ -78,6 +80,13 @@ class PPost extends Component {
         const { handleUpdateComment } = this.props;
 
         this.props.handleUpdateComment(commentId, timestamp, commentBody);
+    }
+
+    handleDeleteButtonClick(event, commentId) {
+
+        event.preventDefault();
+
+        this.props.handleDeleteComment(commentId);
     }
 
     render() {
@@ -164,6 +173,12 @@ function mapDispatchToProps(dispatch) {
             editComment(commentId, timestamp, commentBody)
             .then((data) => {
                 dispatch(editCommentDetailsByID(data));
+            })
+        },
+        handleDeleteComment: (commentId) => {
+            deleteCommentById(commentId)
+            .then((comment) => {
+                dispatch(deleteCommentByID(comment.id));
             })
         }
     };

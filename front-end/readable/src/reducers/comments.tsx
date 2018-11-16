@@ -2,7 +2,6 @@ import { CommentAction } from '../actions/comments';
 import { ICommentState } from '../types/commentState';
 import { CommentActionTypes } from '../constants/comments';
 import { PostActionTypes } from '../constants/posts';
-import { VoteOptions } from '../constants/shared';
 
 const initialState: ICommentState = {
     list: []
@@ -27,15 +26,9 @@ export default function comments(state: ICommentState = initialState, action: Co
             };
         case CommentActionTypes.VOTE_COMMENT_BY_ID:
             return {
-                comments: {
-                    ...state.list,
-                    [action.id]: {
-                        ...state.list[action.id],
-                        voteScore: (action.option === VoteOptions.UP_VOTE)? 
-                            state.list[action.id].voteScore + 1 : state.list[action.id].voteScore - 1
-                    }
-                }
-            }
+                ...state,
+                list: state.list.map(comment => (comment.id !== action.comment.id)? comment : action.comment )
+            };
         case CommentActionTypes.EDIT_COMMENT_DETAILS_BY_ID:
             return {
                 ...state,

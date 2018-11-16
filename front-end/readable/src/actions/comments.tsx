@@ -20,7 +20,7 @@ export interface IViewCommentDetailsByID {
 
 export interface IVoteCommentByID {
     type: CommentActionTypes.VOTE_COMMENT_BY_ID;
-    id: string;
+    comment: IComment;
     option: string;
 }
 
@@ -67,10 +67,10 @@ export function viewCommentDetailsByID(comment: IComment): IViewCommentDetailsBy
     };
 }
 
-export function voteCommentByID(id: string, option: string): IVoteCommentByID {
+export function voteCommentByID(comment: IComment, option: string): IVoteCommentByID {
     return {
         type: CommentActionTypes.VOTE_COMMENT_BY_ID,
-        id,
+        comment,
         option
     };
 }

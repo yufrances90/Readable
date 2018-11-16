@@ -4,7 +4,8 @@ import { connect } from 'react-redux';
 
 import {
     LinearProgress,
-    Grid
+    Grid,
+    Button
 } from '@material-ui/core';
 
 import { 
@@ -16,7 +17,8 @@ import {
     getByPostId as getCommentsByPostId,
     add as addComment,
     edit as editComment,
-    deleteById as deleteCommentById
+    deleteById as deleteCommentById,
+    vote as voteCommentById
 } from '../api/comments';
 import { getInitialData } from '../api/shared';
 import { getAllCategories } from '../actions/categories';
@@ -30,7 +32,8 @@ import {
     getCommentsByPostID,
     addNewComment,
     editCommentDetailsByID,
-    deleteCommentByID 
+    deleteCommentByID,
+    voteCommentByID 
 } from '../actions/comments';
 
 import { createNewComment } from '../utils/helpers';
@@ -89,6 +92,13 @@ class PPost extends Component {
         this.props.handleDeleteComment(commentId);
     }
 
+    handleVoteButtonClick(event, commentId, option) {
+
+        event.preventDefault();
+
+        this.props.handleVoteComment(commentId, option);
+    }
+
     render() {
 
         const { post, comments } = this.props;
@@ -123,6 +133,9 @@ class PPost extends Component {
                         />
                     </Grid>
                     <Grid item xs={3}>
+                        <Button onClick={this.handleVoteButtonClick.bind(this)}>
+                            test
+                        </Button>
                     </Grid>
                 </Grid>
             </div>
@@ -131,7 +144,6 @@ class PPost extends Component {
 }
 
 function mapStateToProps({ posts, comments }) {
-
     return {
         post: posts.post,
         comments
@@ -180,6 +192,12 @@ function mapDispatchToProps(dispatch) {
             deleteCommentById(commentId)
             .then((comment) => {
                 dispatch(deleteCommentByID(comment.id));
+            })
+        },
+        handleVoteComment: (commentId, option) => {
+            voteCommentById(commentId, option)
+            .then((comment) => {
+                dispatch(voteCommentByID(comment, option));
             })
         }
     };

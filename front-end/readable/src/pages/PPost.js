@@ -4,13 +4,15 @@ import { connect } from 'react-redux';
 
 import {
     LinearProgress,
-    Grid
+    Grid,
+    Button
 } from '@material-ui/core';
 
 import { 
     get as getPostById,
     edit,
-    deleteById
+    deleteById,
+    vote as votePostById
 } from '../api/posts';
 import { 
     getByPostId as getCommentsByPostId,
@@ -25,7 +27,8 @@ import {
     viewPostDetailsByID, 
     getAllPosts,
     editPostDetailsByID,
-    deletePostByID 
+    deletePostByID,
+    votePostByID 
 } from '../actions/posts';
 import { 
     getCommentsByPostID,
@@ -95,6 +98,10 @@ class PPost extends Component {
         this.props.handleVoteComment(commentId, option);
     }
 
+    handleVoteButtonClickForPost(postId, option) {
+        this.props.handleVotePost("opkmw10jmsekjr5cnv6an", "upVote");
+    }
+
     render() {
 
         const { post, comments } = this.props;
@@ -130,6 +137,9 @@ class PPost extends Component {
                         />
                     </Grid>
                     <Grid item xs={3}>
+                        <Button onClick={this.handleVoteButtonClickForPost.bind(this)}>
+                            test
+                        </Button>
                     </Grid>
                 </Grid>
             </div>
@@ -192,6 +202,12 @@ function mapDispatchToProps(dispatch) {
             voteCommentById(commentId, option)
             .then((comment) => {
                 dispatch(voteCommentByID(comment, option));
+            })
+        },
+        handleVotePost: (postId, option) => {
+            votePostById(postId, option)
+            .then((post) => {
+                dispatch(votePostByID(post, option));
             })
         }
     };

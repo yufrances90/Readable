@@ -24,7 +24,7 @@ export interface IViewPostDetailsByID {
 
 export interface IVotePostByID {
     type: PostActionTypes.VOTE_POST_BY_ID;
-    id: string;
+    post: IPost;
     option: string;
 }
 
@@ -76,10 +76,10 @@ export function viewPostDetailsByID(post: IPost): IViewPostDetailsByID {
     };
 }
 
-export function votePostByID(id: string, option: string): IVotePostByID {
+export function votePostByID(post: IPost, option: string): IVotePostByID {
     return {
         type: PostActionTypes.VOTE_POST_BY_ID,
-        id,
+        post,
         option
     };
 }

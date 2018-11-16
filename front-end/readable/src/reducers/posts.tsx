@@ -1,7 +1,6 @@
 import { PostAction } from '../actions/posts';
 import { IPostState } from '../types/postState';
 import { PostActionTypes } from '../constants/posts';
-import { VoteOptions } from '../constants/shared';
 
 const initialState: IPostState = {
     list: []
@@ -11,14 +10,17 @@ export default function posts(state: IPostState = initialState, action: PostActi
     switch(action.type) {
         case PostActionTypes.GET_POSTS_BY_CATEGORY:
             return {
+                ...state, 
                 list: [...action.posts]
             }
         case PostActionTypes.GET_ALL_POSTS:
             return {
+                ...state, 
                 list: [...action.posts]
             };
         case PostActionTypes.ADD_NEW_POST:
             return {
+                ...state, 
                 list: state.list.concat([action.post])
             };
         case PostActionTypes.VIEW_POST_DETAILS_BY_ID:
@@ -28,14 +30,8 @@ export default function posts(state: IPostState = initialState, action: PostActi
             };
         case PostActionTypes.VOTE_POST_BY_ID:
             return {
-                list: {
-                    ...state.list,
-                    [action.id]: {
-                        ...state.list[action.id],
-                        voteScore: (action.option === VoteOptions.UP_VOTE)? 
-                            state.list[action.id].voteScore + 1 : state.list[action.id].voteScore - 1
-                    }
-                }
+                ...state, 
+                post: action.post
             }
         case PostActionTypes.EDIT_POST_DETAILS_BY_ID:
             return {
@@ -47,6 +43,7 @@ export default function posts(state: IPostState = initialState, action: PostActi
             }
         case PostActionTypes.DELETE_POST_BY_ID:
             return {
+                ...state, 
                 list: {
                     ...state.list,
                     [action.id]: {

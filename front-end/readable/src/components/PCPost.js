@@ -21,7 +21,8 @@ class PCPost extends Component {
         history.push({
             pathname: `${post.category}/${post.id}`,
             state: {
-                postId: post.id
+                postId: post.id,
+                toHome: false
             }
         });
     }

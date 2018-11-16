@@ -106,7 +106,8 @@ class ListAllPosts extends Component {
                                 to={{
                                     pathname: `${post.category}/${post.id}`,
                                     state: {
-                                        postId: post.id
+                                        postId: post.id,
+                                        toHome: true
                                     }
                                 }}
                                 className="app-link"

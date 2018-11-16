@@ -67,7 +67,17 @@ class PPost extends Component {
 
         event.preventDefault();
 
+        const { history, location, post } = this.props;
+
         this.props.handleDeletePost(postId);
+
+        const { toHome } = location.state;
+
+        const address = (!toHome)? `/${post.category}` : "/";
+
+        history.push({
+            pathname: address
+        });
     }
 
     handleAddNewComment(event, parentId, body, author) {

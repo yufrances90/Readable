@@ -16,6 +16,7 @@ import { Link } from 'react-router-dom';
 
 import { sortMethodMenuItems } from '../constants/shared';
 import PCPost from './PCPost';
+import ListPosts from './ListPosts';
 
 class ListAllPosts extends Component {
 
@@ -106,14 +107,11 @@ class ListAllPosts extends Component {
                 <Divider />
                 <br />
                 <br />
-                <Grid container>
-                    {this.getSortedPosts().map(post => (
-                        <Grid item xs={6} key={post.id}>
-                            <PCPost post={post} history={history} toHome={toHome} />
-                            <br />
-                        </Grid>
-                    ))}
-                </Grid>
+                <ListPosts
+                    posts={this.getSortedPosts()}
+                    history={history}
+                    toHome={toHome} 
+                />
             </div>
         );
     }

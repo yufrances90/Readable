@@ -1,10 +1,6 @@
 import React, { Component } from 'react';
 
-import PCPost from './PCPost';
-
-import {
-    Grid
-} from '@material-ui/core';
+import ListPosts from './ListPosts';
 
 class ListPostsPCBody extends Component {
 
@@ -29,17 +25,11 @@ class ListPostsPCBody extends Component {
                 }
                 {
                     posts.length > 0 &&
-                    <Grid container>
-                        {posts.map(post => (
-                            <Grid item xs={6} key={post.id}>
-                                <PCPost 
-                                    post={post} 
-                                    history={history}
-                                    toHome={toHome} 
-                                />
-                            </Grid>
-                        ))}
-                    </Grid>
+                    <ListPosts
+                        posts={posts}
+                        history={history}
+                        toHome={toHome} 
+                    />
                 }
             </div>
         );

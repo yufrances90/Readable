@@ -4,14 +4,16 @@ import {
     Typography,
     Grid,
     IconButton,
-    TextField 
+    TextField,
+    Tooltip 
 } from '@material-ui/core';
 import {
     Edit,
     Delete,
     FavoriteBorder,
     Favorite,
-    Done
+    Done,
+    Close
 } from '@material-ui/icons';
 
 import { formatDate } from '../utils/utility';
@@ -111,34 +113,49 @@ class PPComment extends Component {
                                 onChange={this.handleUpdateComment.bind(this)}
                             />
                         }
-                        <span style={{float: 'right'}}>
-                            {
-                                !enableEdit && 
+                        {
+                            !enableEdit && 
+                            <span style={{float: 'right'}}>
+                                <Tooltip title="Edit">
+                                    <IconButton
+                                        onClick={this.handleChangeEditMode.bind(this)}
+                                    >
+                                        <Edit />
+                                    </IconButton>
+                                </Tooltip>
+                                <Tooltip title="Delete">
+                                    <IconButton
+                                        onClick={event => handleDeleteButtonClick(event, comment.id)}
+                                    >
+                                        <Delete />
+                                    </IconButton>
+                                </Tooltip>
                                 <IconButton
-                                    onClick={this.handleChangeEditMode.bind(this)}
+                                    onClick={this.handleToggleFavoriteButton.bind(this)}
                                 >
-                                    <Edit />
+                                    {this.determineVoteIcon()}
                                 </IconButton>
-                            }
-                            {
-                                enableEdit && 
-                                <IconButton
-                                    onClick={this.handleDoneButtonClick.bind(this)}
-                                >
-                                    <Done />
-                                </IconButton>
-                            }
-                            <IconButton
-                                onClick={event => handleDeleteButtonClick(event, comment.id)}
-                            >
-                                <Delete />
-                            </IconButton>
-                            <IconButton
-                                onClick={this.handleToggleFavoriteButton.bind(this)}
-                            >
-                                {this.determineVoteIcon()}
-                            </IconButton>
-                        </span>
+                            </span>
+                        }
+                        {
+                            enableEdit && 
+                            <span style={{float: 'right'}}>
+                                <Tooltip title="Done">
+                                    <IconButton
+                                        onClick={this.handleDoneButtonClick.bind(this)}
+                                    >
+                                        <Done />
+                                    </IconButton>
+                                </Tooltip>
+                                <Tooltip title="Cancel">
+                                    <IconButton
+                                        onClick={this.handleChangeEditMode.bind(this)}
+                                    >
+                                        <Close />
+                                    </IconButton>
+                                </Tooltip>
+                            </span>
+                        }
                     </Grid>
                 </Grid>
                 <br />

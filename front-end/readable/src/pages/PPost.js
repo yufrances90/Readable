@@ -99,7 +99,7 @@ class PPost extends Component {
     }
 
     handleVoteButtonClickForPost(postId, option) {
-        this.props.handleVotePost("opkmw10jmsekjr5cnv6an", "upVote");
+        this.props.handleVotePost(postId, option);
     }
 
     render() {
@@ -122,6 +122,7 @@ class PPost extends Component {
                             post={post}
                             handleUpdatePostByID={this.handleUpdatePostByID.bind(this)}
                             handleDeletePostByID={this.handleDeletePostByID.bind(this)}
+                            handleVoteButtonClickForPost={this.handleVoteButtonClickForPost.bind(this)}
                         />
                         <br />
                         <br />

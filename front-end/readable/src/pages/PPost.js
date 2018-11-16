@@ -4,8 +4,7 @@ import { connect } from 'react-redux';
 
 import {
     LinearProgress,
-    Grid,
-    Button
+    Grid
 } from '@material-ui/core';
 
 import { 
@@ -138,9 +137,6 @@ class PPost extends Component {
                         />
                     </Grid>
                     <Grid item xs={3}>
-                        <Button onClick={this.handleVoteButtonClickForPost.bind(this)}>
-                            test
-                        </Button>
                     </Grid>
                 </Grid>
             </div>

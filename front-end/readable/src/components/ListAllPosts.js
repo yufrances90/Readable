@@ -83,7 +83,15 @@ class ListAllPosts extends Component {
                             style={{marginLeft: '1em'}} 
                             color="secondary"
                         >
-                            <Link to="/post/new/add" className="app-link">
+                            <Link 
+                                to={{
+                                    pathname: "/post/new/add",
+                                    state: {
+                                        toHome: true
+                                    }
+                                }} 
+                                className="app-link" 
+                            >
                                 Create New Post
                             </Link>
                         </Button>

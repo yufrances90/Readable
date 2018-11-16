@@ -35,7 +35,18 @@ class NewPostForm extends Component {
             selectedCategory
         } = this.state;
 
-        this.props.handleSubmitForm(title, body, author, selectedCategory);
+        const { handleSubmitForm, history, toHome } = this.props;
+
+        handleSubmitForm(title, body, author, selectedCategory);
+
+        const address = toHome? "/" : `/${selectedCategory}`;
+
+        history.push({
+            pathname: address,
+            state: {
+                selectedCategory
+            }
+        });
     }
 
     render() {

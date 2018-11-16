@@ -43,7 +43,13 @@ class PCreate extends Component {
 
     render() {
 
-        const { categories } = this.props;
+        const { 
+            categories,
+            location,
+            history 
+        } = this.props;
+
+        const { toHome } = location.state;
 
         return (
             <div>
@@ -54,6 +60,8 @@ class PCreate extends Component {
                         <NewPostForm 
                             categories={categories.list} 
                             handleSubmitForm={this.handleSubmitForm.bind(this)}
+                            toHome={toHome}
+                            history={history}
                         />
                     </Grid>
                 </Grid>

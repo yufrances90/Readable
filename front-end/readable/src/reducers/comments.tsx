@@ -40,15 +40,10 @@ export default function comments(state: ICommentState = initialState, action: Co
                 list: state.list.filter(comment => comment.id !== action.id)
             }
         case PostActionTypes.DELETE_POST_BY_ID:
-            return state.list.map(comment => {
-                if (comment.parentId === action.id) {
-                    return {
-                        ...comment,
-                        parentDeleted: true
-                    }
-                } 
-                return comment;
-            })
+            return {
+                ...state,
+                list: state.list.filter(comment => comment.parentId !== action.id)
+            }
         default:
             return state;
     }

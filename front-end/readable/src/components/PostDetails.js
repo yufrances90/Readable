@@ -6,7 +6,9 @@ import {
     IconButton
 } from '@material-ui/core';
 import { 
-    Delete 
+    Delete,
+    Favorite,
+    FavoriteBorder 
 } from '@material-ui/icons';
 
 import { formatDate } from '../utils/utility';
@@ -41,6 +43,9 @@ class PostDetails extends Component {
                         onClick={event => handleDeletePostByID(event, post.id)}
                     >
                         <Delete />
+                    </IconButton>
+                    <IconButton>
+                        <FavoriteBorder />
                     </IconButton>
                 </Typography>
                 <Divider />

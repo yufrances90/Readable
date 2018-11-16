@@ -24,7 +24,7 @@ class ListAll extends Component {
 
     render() {
 
-        const { categories, posts } = this.props;
+        const { categories, posts, history } = this.props;
 
         const categoryList = categories.list;
 
@@ -41,7 +41,10 @@ class ListAll extends Component {
                     <ListAllCategories categories={categoryList} />
                 </div>
                 <div style={{marginTop: '7em'}}>
-                    <ListAllPosts posts={postList} />
+                    <ListAllPosts 
+                        posts={postList}
+                        history={history} 
+                    />
                 </div>
                 <br />
                 <br />

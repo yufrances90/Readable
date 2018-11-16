@@ -23,7 +23,7 @@ class ListPostsPCBody extends Component {
                 }
                 {
                     posts.length > 0 &&
-                    <List>
+                    <List className="app-flex-container">
                         {posts.map(post => (
                             <ListItem key={post.id}>
                                 <PCPost post={post} history={history} />

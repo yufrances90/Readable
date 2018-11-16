@@ -20,7 +20,7 @@ class PHome extends Component {
 
     render() {
 
-        const { categories, posts } = this.props;
+        const { categories, posts, history } = this.props;
 
         return (
             
@@ -31,6 +31,7 @@ class PHome extends Component {
                     <ListAll
                         categories={categories}
                         posts={posts}
+                        history={history}
                     />
                 </Grid>
             </Grid>

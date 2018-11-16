@@ -14,6 +14,7 @@ import {
 import { Link } from 'react-router-dom';
 
 import { sortMethodMenuItems } from '../constants/shared';
+import PCPost from './PCPost';
 
 class ListAllPosts extends Component {
 
@@ -50,6 +51,8 @@ class ListAllPosts extends Component {
     render() {
 
         const { sortMethod } = this.state;
+
+        const { history } = this.props;
 
         return (
             <div>
@@ -112,7 +115,7 @@ class ListAllPosts extends Component {
                                 }}
                                 className="app-link"
                             >
-                                {post.title}
+                                <PCPost post={post} history={history} />
                             </Link>
                         </ListItem>
                     ))}

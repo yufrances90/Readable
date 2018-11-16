@@ -11,6 +11,7 @@ import PHome from './pages/PHome';
 import PCategory from './pages/PCategory';
 import PCreate from './pages/PCreate';
 import PPost from './pages/PPost';
+import PNotFound from './pages/PNotFound';
 
 class App extends Component {
 
@@ -24,6 +25,7 @@ class App extends Component {
                         <Route exact path="/:category/:post_id" component={PPost} />
                         <Route exact path="/:category" component={PCategory} />
                         <Route exact path="/post/new/add" component={PCreate} />
+                        <Route exact path="/post/not/found" component={PNotFound} />
                     </div>
                 </div>
             </Router>

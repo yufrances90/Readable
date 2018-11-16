@@ -15,6 +15,7 @@ import {
 } from '@material-ui/icons';
 
 import { formatDate } from '../utils/utility';
+import { VoteOptions } from '../constants/shared';
 
 class PPComment extends Component {
 
@@ -32,7 +33,11 @@ class PPComment extends Component {
             return {
                 liked: !prevState.liked
             };
-        })
+        });
+
+        const option = (this.state.liked)? VoteOptions.DOWN_VOTE : VoteOptions.UP_VOTE;
+
+        this.props.handleVoteButtonClick(this.props.comment.id, option);
     }
 
     determineVoteIcon() {

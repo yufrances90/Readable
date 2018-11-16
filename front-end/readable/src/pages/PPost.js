@@ -4,8 +4,7 @@ import { connect } from 'react-redux';
 
 import {
     LinearProgress,
-    Grid,
-    Button
+    Grid
 } from '@material-ui/core';
 
 import { 
@@ -92,10 +91,7 @@ class PPost extends Component {
         this.props.handleDeleteComment(commentId);
     }
 
-    handleVoteButtonClick(event, commentId, option) {
-
-        event.preventDefault();
-
+    handleVoteButtonClick(commentId, option) {
         this.props.handleVoteComment(commentId, option);
     }
 
@@ -130,12 +126,10 @@ class PPost extends Component {
                             postId={post.id}
                             handleClickCommentUpdate={this.handleClickCommentUpdate.bind(this)}
                             handleDeleteButtonClick={this.handleDeleteButtonClick.bind(this)}
+                            handleVoteButtonClick={this.handleVoteButtonClick.bind(this)}
                         />
                     </Grid>
                     <Grid item xs={3}>
-                        <Button onClick={this.handleVoteButtonClick.bind(this)}>
-                            test
-                        </Button>
                     </Grid>
                 </Grid>
             </div>

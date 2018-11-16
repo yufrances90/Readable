@@ -16,7 +16,8 @@ class ListComments extends Component {
             handleAddNewComment,
             postId,
             handleClickCommentUpdate,
-            handleDeleteButtonClick 
+            handleDeleteButtonClick,
+            handleVoteButtonClick 
         } = this.props;
 
         return (
@@ -39,7 +40,8 @@ class ListComments extends Component {
                             comment={comment} 
                             key={comment.id}
                             handleClickCommentUpdate={handleClickCommentUpdate}
-                            handleDeleteButtonClick={handleDeleteButtonClick} 
+                            handleDeleteButtonClick={handleDeleteButtonClick}
+                            handleVoteButtonClick={handleVoteButtonClick} 
                         />
                     ))}
                 </div>

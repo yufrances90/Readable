@@ -16,13 +16,13 @@ class PCPost extends Component {
 
         event.preventDefault();
 
-        const { history, post } = this.props;
+        const { history, post, toHome } = this.props;
 
         history.push({
             pathname: `${post.category}/${post.id}`,
             state: {
                 postId: post.id,
-                toHome: false
+                toHome
             }
         });
     }

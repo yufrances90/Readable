@@ -8,7 +8,8 @@ import {
     InputLabel,
     Select,
     MenuItem,
-    Button
+    Button,
+    Grid
 } from '@material-ui/core';
 
 import { Link } from 'react-router-dom';
@@ -19,7 +20,8 @@ import PCPost from './PCPost';
 class ListAllPosts extends Component {
 
     state = {
-        sortMethod: ''
+        sortMethod: '',
+        toHome: true
     }
 
     handleChange(event) {
@@ -50,7 +52,7 @@ class ListAllPosts extends Component {
 
     render() {
 
-        const { sortMethod } = this.state;
+        const { sortMethod, toHome } = this.state;
 
         const { history } = this.props;
 
@@ -102,24 +104,16 @@ class ListAllPosts extends Component {
                 </Typography>
                 <br />
                 <Divider />
-                <List className="app-flex-container">
+                <br />
+                <br />
+                <Grid container>
                     {this.getSortedPosts().map(post => (
-                        <ListItem button key={post.id}>
-                            <Link
-                                to={{
-                                    pathname: `${post.category}/${post.id}`,
-                                    state: {
-                                        postId: post.id,
-                                        toHome: true
-                                    }
-                                }}
-                                className="app-link"
-                            >
-                                <PCPost post={post} history={history} />
-                            </Link>
-                        </ListItem>
+                        <Grid item xs={6} key={post.id}>
+                            <PCPost post={post} history={history} toHome={toHome} />
+                            <br />
+                        </Grid>
                     ))}
-                </List>
+                </Grid>
             </div>
         );
     }

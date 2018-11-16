@@ -3,17 +3,23 @@ import React, { Component } from 'react';
 import PCPost from './PCPost';
 
 import {
-    List,
-    ListItem
+    Grid
 } from '@material-ui/core';
 
 class ListPostsPCBody extends Component {
+
+    state = {
+        toHome: false
+    }
+
     render() {
 
         const {
             posts,
             history
         } = this.props;
+
+        const { toHome } = this.state;
 
         return (
             <div>
@@ -23,13 +29,17 @@ class ListPostsPCBody extends Component {
                 }
                 {
                     posts.length > 0 &&
-                    <List className="app-flex-container">
+                    <Grid container>
                         {posts.map(post => (
-                            <ListItem key={post.id}>
-                                <PCPost post={post} history={history} />
-                            </ListItem>
+                            <Grid item xs={6} key={post.id}>
+                                <PCPost 
+                                    post={post} 
+                                    history={history}
+                                    toHome={toHome} 
+                                />
+                            </Grid>
                         ))}
-                    </List>
+                    </Grid>
                 }
             </div>
         );

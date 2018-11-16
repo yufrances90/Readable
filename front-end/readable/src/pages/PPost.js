@@ -7,6 +7,8 @@ import {
     Grid
 } from '@material-ui/core';
 
+import { Redirect } from 'react-router-dom';
+
 import { 
     get as getPostById,
     edit,
@@ -108,7 +110,7 @@ class PPost extends Component {
         const commentList = comments.list;
 
         if (!post) {
-            return <LinearProgress />
+            return <Redirect to="/post/not/found" />
         }
 
         return (

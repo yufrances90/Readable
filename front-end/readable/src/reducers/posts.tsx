@@ -44,13 +44,7 @@ export default function posts(state: IPostState = initialState, action: PostActi
         case PostActionTypes.DELETE_POST_BY_ID:
             return {
                 ...state, 
-                list: {
-                    ...state.list,
-                    [action.id]: {
-                        ...state.list[action.id],
-                        deleted: true
-                    }
-                }
+                list: state.list.filter(post => post.id !== action.id)
             }
         default:
             return state;

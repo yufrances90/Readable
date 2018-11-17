@@ -60,7 +60,7 @@ class PCPost extends Component {
 
     render() {
 
-        const { post } = this.props;
+        const { post, handleDeletePostByID } = this.props;
 
         return (
             <div>
@@ -103,7 +103,7 @@ class PCPost extends Component {
                                     </IconButton>
                                 </Tooltip>
                                 <Tooltip title="Delete">
-                                    <IconButton>
+                                    <IconButton onClick={event => handleDeletePostByID(event, post.id)}>
                                         <Delete />
                                     </IconButton>
                                 </Tooltip>

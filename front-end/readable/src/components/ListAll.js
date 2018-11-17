@@ -24,7 +24,12 @@ class ListAll extends Component {
 
     render() {
 
-        const { categories, posts, history } = this.props;
+        const { 
+            categories, 
+            posts, 
+            history, 
+            handleDeletePostByID 
+        } = this.props;
 
         const categoryList = categories.list;
 
@@ -43,7 +48,8 @@ class ListAll extends Component {
                 <div style={{marginTop: '7em'}}>
                     <ListAllPosts 
                         posts={postList}
-                        history={history} 
+                        history={history}
+                        handleDeletePostByID={handleDeletePostByID} 
                     />
                 </div>
                 <br />

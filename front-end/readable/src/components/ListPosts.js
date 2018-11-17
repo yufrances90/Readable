@@ -8,7 +8,12 @@ class ListPosts extends Component {
 
     render() {
 
-        const { posts, toHome, history } = this.props;
+        const { 
+            posts, 
+            toHome, 
+            history, 
+            handleDeletePostByID 
+        } = this.props;
 
         return (
             <Grid container>
@@ -17,7 +22,8 @@ class ListPosts extends Component {
                         <PCPost 
                             post={post} 
                             history={history}
-                            toHome={toHome} 
+                            toHome={toHome}
+                            handleDeletePostByID={handleDeletePostByID} 
                         />
                         <br />
                     </Grid>

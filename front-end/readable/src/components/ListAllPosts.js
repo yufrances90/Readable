@@ -55,7 +55,7 @@ class ListAllPosts extends Component {
 
         const { sortMethod, toHome } = this.state;
 
-        const { history } = this.props;
+        const { history, handleDeletePostByID } = this.props;
 
         return (
             <div>
@@ -110,7 +110,8 @@ class ListAllPosts extends Component {
                 <ListPosts
                     posts={this.getSortedPosts()}
                     history={history}
-                    toHome={toHome} 
+                    toHome={toHome}
+                    handleDeletePostByID={handleDeletePostByID} 
                 />
             </div>
         );

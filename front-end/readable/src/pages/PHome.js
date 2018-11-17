@@ -4,9 +4,16 @@ import { connect } from 'react-redux';
 
 import { Grid } from '@material-ui/core';
 
+import { 
+    deleteById
+} from '../api/posts';
 import { getInitialData } from '../api/shared';
 import { getAllCategories } from '../actions/categories';
-import { getAllPosts } from '../actions/posts';
+import { 
+    getAllPosts,
+    deletePostByID 
+} from '../actions/posts';
+
 import ListAll from '../components/ListAll';
 
 class PHome extends Component {
@@ -18,9 +25,25 @@ class PHome extends Component {
         this.props.handleReceiveData();
     }
 
+    handleDeletePostByID(event, postId) {
+
+        const { history } = this.props;
+
+        event.preventDefault();
+
+        this.props.handleDeletePost(postId);
+
+        history.push("/");
+    }
+
     render() {
 
-        const { categories, posts, history } = this.props;
+        const { 
+            categories, 
+            posts, 
+            history, 
+            handleDeletePostByID 
+        } = this.props;
 
         return (
             
@@ -32,6 +55,7 @@ class PHome extends Component {
                         categories={categories}
                         posts={posts}
                         history={history}
+                        handleDeletePostByID={this.handleDeletePostByID.bind(this)}
                     />
                 </Grid>
             </Grid>
@@ -53,6 +77,12 @@ function mapDispatchToProps(dispatch) {
             .then(({ categories, posts }) => {
                 dispatch(getAllCategories(categories))
                 dispatch(getAllPosts(posts));
+            })
+        },
+        handleDeletePost: (postId) => {
+            deleteById(postId)
+            .then((post) => {
+                dispatch(deletePostByID(post.id));
             })
         }
     };

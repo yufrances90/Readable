@@ -48,9 +48,17 @@ class PPost extends Component {
 
     componentDidMount() {
 
-        const { location } = this.props;
+        const { 
+            location, 
+            postIds,
+            handleReceiveData 
+        } = this.props;
 
         const { postId } = location.state;
+
+        if (postIds.length === 0) {
+            handleReceiveData();
+        }
 
         this.props.handleGetPost(postId);
         this.props.handleGetCommentsByPostId(postId);
@@ -115,12 +123,16 @@ class PPost extends Component {
 
     render() {
 
-        const { post, comments } = this.props;
+        const { post, comments, postIds } = this.props;
 
         const commentList = comments.list;
 
         if (!post) {
             return <LinearProgress />
+        }
+
+        if (!postIds.includes(post.id)) {
+            return <Redirect to="/post/not/found" />
         }
 
         return (
@@ -159,7 +171,8 @@ class PPost extends Component {
 function mapStateToProps({ posts, comments }) {
     return {
         post: posts.post,
-        comments
+        comments,
+        postIds: posts.list.map(post => post.id)
     };
 }
 
@@ -217,6 +230,13 @@ function mapDispatchToProps(dispatch) {
             votePostById(postId, option)
             .then((post) => {
                 dispatch(votePostByID(post, option));
+            })
+        },
+        handleReceiveData: () => {
+            getInitialData()
+            .then(({ categories, posts }) => {
+                dispatch(getAllCategories(categories))
+                dispatch(getAllPosts(posts));
             })
         }
     };

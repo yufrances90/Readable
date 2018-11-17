@@ -58,7 +58,8 @@ class ListAllPosts extends Component {
         const { 
             history, 
             handleDeletePostByID, 
-            handleVoteButtonClickForPost 
+            handleVoteButtonClickForPost,
+            handleUpdatePostByID 
         } = this.props;
 
         return (
@@ -116,7 +117,8 @@ class ListAllPosts extends Component {
                     history={history}
                     toHome={toHome}
                     handleDeletePostByID={handleDeletePostByID}
-                    handleVoteButtonClickForPost={handleVoteButtonClickForPost} 
+                    handleVoteButtonClickForPost={handleVoteButtonClickForPost}
+                    handleUpdatePostByID={handleUpdatePostByID} 
                 />
             </div>
         );

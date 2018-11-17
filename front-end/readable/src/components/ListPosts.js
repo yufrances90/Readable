@@ -14,7 +14,7 @@ class ListPosts extends Component {
             history, 
             handleDeletePostByID,
             handleVoteButtonClickForPost,
-            handleUpdatePostByID 
+            handleUpdatePostByID
         } = this.props;
 
         return (

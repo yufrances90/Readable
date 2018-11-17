@@ -6,14 +6,16 @@ import { Grid } from '@material-ui/core';
 
 import { 
     deleteById,
-    vote as votePostById
+    vote as votePostById,
+    edit as editPostById
 } from '../api/posts';
 import { getInitialData } from '../api/shared';
 import { getAllCategories } from '../actions/categories';
 import { 
     getAllPosts,
     deletePostByID,
-    votePostByID 
+    votePostByID,
+    editPostDetailsByID 
 } from '../actions/posts';
 
 import ListAll from '../components/ListAll';
@@ -42,6 +44,13 @@ class PHome extends Component {
         this.props.handleVotePost(postId, option);
     }
 
+    handleUpdatePostByID(event, postId, title, body) {
+
+        event.preventDefault();
+
+        this.props.handleUpdatePost(postId, title, body);
+    }
+
     render() {
 
         const { 
@@ -62,6 +71,7 @@ class PHome extends Component {
                         history={history}
                         handleDeletePostByID={this.handleDeletePostByID.bind(this)}
                         handleVoteButtonClickForPost={this.handleVoteButtonClickForPost.bind(this)}
+                        handleUpdatePostByID={this.handleUpdatePostByID.bind(this)}
                     />
                 </Grid>
             </Grid>
@@ -95,6 +105,12 @@ function mapDispatchToProps(dispatch) {
             votePostById(postId, option)
             .then((post) => {
                 dispatch(votePostByID(post, option));
+            })
+        },
+        handleUpdatePost: (postId, title, body) => {
+            editPostById(postId, title, body)
+            .then((post) => {
+                dispatch(editPostDetailsByID(post));
             })
         }
     };

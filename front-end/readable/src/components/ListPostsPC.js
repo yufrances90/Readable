@@ -18,7 +18,8 @@ class ListPostsPC extends Component {
             handleSelectSortMethod,
             posts,
             history,
-            handleDeletePostByID
+            handleDeletePostByID,
+            handleVoteButtonClickForPost
         } = this.props;
 
         return (
@@ -46,6 +47,7 @@ class ListPostsPC extends Component {
                             posts={posts} 
                             history={history}
                             handleDeletePostByID={handleDeletePostByID}
+                            handleVoteButtonClickForPost={handleVoteButtonClickForPost}
                         />
                     </div>
                 }

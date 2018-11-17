@@ -12,13 +12,15 @@ import {
 import { add } from '../api/categories';
 import { 
     getByCategory,
-    deleteById 
+    deleteById,
+    vote as votePostById 
 } from '../api/posts';
 import { getInitialData } from '../api/shared';
 import { 
     getPostsByCategory,
     getAllPosts,
-    deletePostByID
+    deletePostByID,
+    votePostByID
 } from '../actions/posts';
 import { 
     getAllCategories,
@@ -125,6 +127,10 @@ class PCategory extends Component {
         history.push(`/${this.state.selectedCategory}`);
     }
 
+    handleVoteButtonClickForPost(postId, option) {
+        this.props.handleVotePost(postId, option);
+    }
+
     render() {
 
         const { 
@@ -169,6 +175,7 @@ class PCategory extends Component {
                                 posts={this.getSortedPosts().list.filter(post => post.category === selectedCategory)}
                                 history={history}
                                 handleDeletePostByID={this.handleDeletePostByID.bind(this)}
+                                handleVoteButtonClickForPost={this.handleVoteButtonClickForPost.bind(this)}
                             /> 
                         }
                     </Grid>
@@ -243,6 +250,12 @@ function mapDispatchToProps(dispatch) {
             deleteById(postId)
             .then((post) => {
                 dispatch(deletePostByID(post.id));
+            })
+        },
+        handleVotePost: (postId, option) => {
+            votePostById(postId, option)
+            .then((post) => {
+                dispatch(votePostByID(post, option));
             })
         }
     };

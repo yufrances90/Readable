@@ -13,8 +13,6 @@ import {
 import {
     Edit,
     Delete,
-    Favorite,
-    FavoriteBorder,
     ThumbUpAlt,
     ThumbDownAlt
 } from '@material-ui/icons';

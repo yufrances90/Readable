@@ -14,7 +14,9 @@ import {
     Edit,
     Delete,
     Favorite,
-    FavoriteBorder
+    FavoriteBorder,
+    ThumbUpAlt,
+    ThumbDownAlt
 } from '@material-ui/icons';
 
 import { formatDate } from '../utils/utility';
@@ -23,7 +25,8 @@ import { VoteOptions } from '../constants/shared';
 class PCPost extends Component {
 
     state = {
-        liked: false
+        upVote: false,
+        downVote: false
     }
 
     handleClick(event) {
@@ -41,23 +44,15 @@ class PCPost extends Component {
         });
     }
 
-    handleToggleLikeButton(event) {
+    handleToggleLikeButton(event, option) {
 
         event.preventDefault();
 
-        this.setState((prevState) => {
-            return {
-                liked: !prevState.liked
-            };
-        });
-
         const { post, handleVoteButtonClickForPost } = this.props;
 
-        const { liked } = this.state;
-
-        const option = liked? VoteOptions.DOWN_VOTE : VoteOptions.UP_VOTE;
-
         handleVoteButtonClickForPost(post.id, option);
+
+        // window.location.reload();
     }
 
     determineLikeButtonIcon() {
@@ -116,8 +111,11 @@ class PCPost extends Component {
                                         <Delete />
                                     </IconButton>
                                 </Tooltip>
-                                <IconButton onClick={this.handleToggleLikeButton.bind(this)}>
-                                    {this.determineLikeButtonIcon()}
+                                <IconButton onClick={event => this.handleToggleLikeButton(event, VoteOptions.UP_VOTE)}>
+                                    <ThumbUpAlt />
+                                </IconButton>
+                                <IconButton onClick={event => this.handleToggleLikeButton(event, VoteOptions.DOWN_VOTE)}>
+                                    <ThumbDownAlt />
                                 </IconButton>
                             </Grid>
                         </Grid>

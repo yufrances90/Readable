@@ -31,6 +31,7 @@ export default function posts(state: IPostState = initialState, action: PostActi
         case PostActionTypes.VOTE_POST_BY_ID:
             return {
                 ...state, 
+                list: state.list.map(post => (post.id !== action.post.id)? post : action.post),
                 post: action.post
             }
         case PostActionTypes.EDIT_POST_DETAILS_BY_ID:

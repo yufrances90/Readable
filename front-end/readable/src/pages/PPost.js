@@ -120,7 +120,7 @@ class PPost extends Component {
         const commentList = comments.list;
 
         if (!post) {
-            return <Redirect to="/post/not/found" />
+            return <LinearProgress />
         }
 
         return (

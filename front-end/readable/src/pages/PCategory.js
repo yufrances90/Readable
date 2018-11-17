@@ -10,11 +10,15 @@ import {
 } from '@material-ui/core';
 
 import { add } from '../api/categories';
-import { getByCategory } from '../api/posts';
+import { 
+    getByCategory,
+    deleteById 
+} from '../api/posts';
 import { getInitialData } from '../api/shared';
 import { 
     getPostsByCategory,
-    getAllPosts
+    getAllPosts,
+    deletePostByID
 } from '../actions/posts';
 import { 
     getAllCategories,
@@ -110,6 +114,17 @@ class PCategory extends Component {
         }
     }
 
+    handleDeletePostByID(event, postId) {
+
+        const { history } = this.props;
+
+        event.preventDefault();
+
+        this.props.handleDeletePost(postId);
+
+        history.push(`/${this.state.selectedCategory}`);
+    }
+
     render() {
 
         const { 
@@ -153,6 +168,7 @@ class PCategory extends Component {
                                 handleSelectSortMethod={this.handleSelectSortMethod.bind(this)}
                                 posts={this.getSortedPosts().list.filter(post => post.category === selectedCategory)}
                                 history={history}
+                                handleDeletePostByID={this.handleDeletePostByID.bind(this)}
                             /> 
                         }
                     </Grid>
@@ -221,6 +237,12 @@ function mapDispatchToProps(dispatch) {
             add(newCategory)
             .then((data) => {
                 dispatch(addNewCategory(data.category));
+            })
+        },
+        handleDeletePost: (postId) => {
+            deleteById(postId)
+            .then((post) => {
+                dispatch(deletePostByID(post.id));
             })
         }
     };

@@ -12,7 +12,8 @@ class ListPostsPCBody extends Component {
 
         const {
             posts,
-            history
+            history,
+            handleDeletePostByID
         } = this.props;
 
         const { toHome } = this.state;
@@ -28,7 +29,8 @@ class ListPostsPCBody extends Component {
                     <ListPosts
                         posts={posts}
                         history={history}
-                        toHome={toHome} 
+                        toHome={toHome}
+                        handleDeletePostByID={handleDeletePostByID} 
                     />
                 }
             </div>

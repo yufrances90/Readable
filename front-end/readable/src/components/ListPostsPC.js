@@ -17,7 +17,8 @@ class ListPostsPC extends Component {
             selectedCategory,
             handleSelectSortMethod,
             posts,
-            history
+            history,
+            handleDeletePostByID
         } = this.props;
 
         return (
@@ -44,6 +45,7 @@ class ListPostsPC extends Component {
                         <ListPostsPCBody
                             posts={posts} 
                             history={history}
+                            handleDeletePostByID={handleDeletePostByID}
                         />
                     </div>
                 }

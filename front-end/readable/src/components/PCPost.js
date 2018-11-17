@@ -49,8 +49,6 @@ class PCPost extends Component {
         const { post, handleVoteButtonClickForPost } = this.props;
 
         handleVoteButtonClickForPost(post.id, option);
-
-        // window.location.reload();
     }
 
     determineLikeButtonIcon() {

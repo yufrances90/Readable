@@ -28,7 +28,8 @@ class ListAll extends Component {
             categories, 
             posts, 
             history, 
-            handleDeletePostByID 
+            handleDeletePostByID,
+            handleVoteButtonClickForPost 
         } = this.props;
 
         const categoryList = categories.list;
@@ -38,7 +39,7 @@ class ListAll extends Component {
         }
 
         const postList = (posts && posts.list.length > 0)? posts.list : [];
-       
+        
         return (
             <div>
                 <ListAllHeader />
@@ -49,7 +50,8 @@ class ListAll extends Component {
                     <ListAllPosts 
                         posts={postList}
                         history={history}
-                        handleDeletePostByID={handleDeletePostByID} 
+                        handleDeletePostByID={handleDeletePostByID}
+                        handleVoteButtonClickForPost={handleVoteButtonClickForPost} 
                     />
                 </div>
                 <br />

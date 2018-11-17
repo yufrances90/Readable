@@ -12,7 +12,8 @@ class ListPosts extends Component {
             posts, 
             toHome, 
             history, 
-            handleDeletePostByID 
+            handleDeletePostByID,
+            handleVoteButtonClickForPost 
         } = this.props;
 
         return (
@@ -23,7 +24,8 @@ class ListPosts extends Component {
                             post={post} 
                             history={history}
                             toHome={toHome}
-                            handleDeletePostByID={handleDeletePostByID} 
+                            handleDeletePostByID={handleDeletePostByID}
+                            handleVoteButtonClickForPost={handleVoteButtonClickForPost} 
                         />
                         <br />
                     </Grid>

@@ -5,13 +5,15 @@ import { connect } from 'react-redux';
 import { Grid } from '@material-ui/core';
 
 import { 
-    deleteById
+    deleteById,
+    vote as votePostById
 } from '../api/posts';
 import { getInitialData } from '../api/shared';
 import { getAllCategories } from '../actions/categories';
 import { 
     getAllPosts,
-    deletePostByID 
+    deletePostByID,
+    votePostByID 
 } from '../actions/posts';
 
 import ListAll from '../components/ListAll';
@@ -36,13 +38,16 @@ class PHome extends Component {
         history.push("/");
     }
 
+    handleVoteButtonClickForPost(postId, option) {
+        this.props.handleVotePost(postId, option);
+    }
+
     render() {
 
         const { 
             categories, 
             posts, 
-            history, 
-            handleDeletePostByID 
+            history
         } = this.props;
 
         return (
@@ -56,6 +61,7 @@ class PHome extends Component {
                         posts={posts}
                         history={history}
                         handleDeletePostByID={this.handleDeletePostByID.bind(this)}
+                        handleVoteButtonClickForPost={this.handleVoteButtonClickForPost.bind(this)}
                     />
                 </Grid>
             </Grid>
@@ -83,6 +89,12 @@ function mapDispatchToProps(dispatch) {
             deleteById(postId)
             .then((post) => {
                 dispatch(deletePostByID(post.id));
+            })
+        },
+        handleVotePost: (postId, option) => {
+            votePostById(postId, option)
+            .then((post) => {
+                dispatch(votePostByID(post, option));
             })
         }
     };

@@ -18,6 +18,7 @@ import {
 } from '@material-ui/icons';
 
 import { formatDate } from '../utils/utility';
+import { VoteOptions } from '../constants/shared';
 
 class PCPost extends Component {
 
@@ -49,6 +50,14 @@ class PCPost extends Component {
                 liked: !prevState.liked
             };
         });
+
+        const { post, handleVoteButtonClickForPost } = this.props;
+
+        const { liked } = this.state;
+
+        const option = liked? VoteOptions.DOWN_VOTE : VoteOptions.UP_VOTE;
+
+        handleVoteButtonClickForPost(post.id, option);
     }
 
     determineLikeButtonIcon() {

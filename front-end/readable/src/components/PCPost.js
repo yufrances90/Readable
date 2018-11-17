@@ -51,13 +51,6 @@ class PCPost extends Component {
         handleVoteButtonClickForPost(post.id, option);
     }
 
-    determineLikeButtonIcon() {
-
-        const { liked } = this.state;
-
-        return liked? <Favorite /> : <FavoriteBorder />;
-    }
-
     render() {
 
         const { post, handleDeletePostByID } = this.props;

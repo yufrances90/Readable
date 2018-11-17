@@ -36,10 +36,8 @@ export default function posts(state: IPostState = initialState, action: PostActi
             }
         case PostActionTypes.EDIT_POST_DETAILS_BY_ID:
             return {
-                list: {
-                    ...state.list,
-                    [action.post.id]: action.post
-                },
+                ...state, 
+                list: state.list.map(post => (post.id !== action.post.id)? post : action.post),
                 post: action.post
             }
         case PostActionTypes.DELETE_POST_BY_ID:

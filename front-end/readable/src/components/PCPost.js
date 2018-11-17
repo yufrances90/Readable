@@ -19,6 +19,7 @@ import {
 
 import { formatDate } from '../utils/utility';
 import { VoteOptions } from '../constants/shared';
+import EditPostModal from './EditPostModal';
 
 class PCPost extends Component {
 
@@ -53,7 +54,11 @@ class PCPost extends Component {
 
     render() {
 
-        const { post, handleDeletePostByID } = this.props;
+        const { 
+            post, 
+            handleDeletePostByID, 
+            handleUpdatePostByID 
+        } = this.props;
 
         return (
             <div>
@@ -90,11 +95,12 @@ class PCPost extends Component {
                                 </Tooltip>
                             </Grid>
                             <Grid>
-                                <Tooltip title="Edit">
-                                    <IconButton>
-                                        <Edit />
-                                    </IconButton>
-                                </Tooltip>
+                                <EditPostModal
+                                    postId={post.id}
+                                    title={post.title}
+                                    body={post.body}
+                                    handleUpdatePostByID={handleUpdatePostByID}
+                                />
                                 <Tooltip title="Delete">
                                     <IconButton onClick={event => handleDeletePostByID(event, post.id)}>
                                         <Delete />

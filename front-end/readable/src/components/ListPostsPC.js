@@ -19,7 +19,8 @@ class ListPostsPC extends Component {
             posts,
             history,
             handleDeletePostByID,
-            handleVoteButtonClickForPost
+            handleVoteButtonClickForPost,
+            handleUpdatePostByID
         } = this.props;
 
         return (
@@ -48,6 +49,7 @@ class ListPostsPC extends Component {
                             history={history}
                             handleDeletePostByID={handleDeletePostByID}
                             handleVoteButtonClickForPost={handleVoteButtonClickForPost}
+                            handleUpdatePostByID={handleUpdatePostByID}
                         />
                     </div>
                 }

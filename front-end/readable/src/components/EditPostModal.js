@@ -30,7 +30,8 @@ class EditPostModal extends Component {
 
         const { open } = this.state;
 
-        const { 
+        const {
+            postId, 
             title, 
             body, 
             handleUpdatePostByID 
@@ -39,7 +40,7 @@ class EditPostModal extends Component {
         return (
             <Fragment>
                 <IconButton onClick={this.handleOpen.bind(this)}>
-                        <Edit />
+                    <Edit />
                 </IconButton>
                 <Modal
                     open={open}
@@ -49,6 +50,7 @@ class EditPostModal extends Component {
                         <EditPostForm 
                             title={title}
                             body={body}
+                            postId={postId}
                             handleUpdatePostByID={handleUpdatePostByID}
                         />
                     </div>

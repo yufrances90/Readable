@@ -56,11 +56,11 @@ class PPost extends Component {
         this.props.handleGetCommentsByPostId(postId);
     }
 
-    handleUpdatePostByID(event, title, body) {
+    handleUpdatePostByID(event, postId, title, body) {
 
         event.preventDefault();
 
-        this.props.handleUpdatePost(this.props.post.id, title, body);
+        this.props.handleUpdatePost(postId, title, body);
     }
 
     handleDeletePostByID(event, postId) {

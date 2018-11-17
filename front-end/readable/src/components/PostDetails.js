@@ -63,6 +63,7 @@ class PostDetails extends Component {
                     comments: {post.commentCount} | 
                     votes: {post.voteScore}
                     <EditPostModal
+                        postId={post.id}
                         title={post.title}
                         body={post.body}
                         handleUpdatePostByID={handleUpdatePostByID}

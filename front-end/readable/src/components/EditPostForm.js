@@ -23,7 +23,7 @@ class EditPostForm extends Component {
 
         const { title, body } = this.state;
 
-        const { handleUpdatePostByID } = this.props;
+        const { handleUpdatePostByID, postId } = this.props;
 
         return (
             <form>
@@ -56,7 +56,7 @@ class EditPostForm extends Component {
                     variant="outlined" 
                     color="primary" 
                     style={{ left: '43%' }}
-                    onClick={event => handleUpdatePostByID(event, title, body)}
+                    onClick={event => handleUpdatePostByID(event, postId, title, body)}
                 >
                     Submit
                 </Button>

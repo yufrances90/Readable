@@ -5,12 +5,25 @@ import {
     CardContent,
     Typography,
     CardActions,
-    Button
+    Button,
+    IconButton,
+    Grid,
+    Tooltip
 } from '@material-ui/core';
+import {
+    Edit,
+    Delete,
+    Favorite,
+    FavoriteBorder
+} from '@material-ui/icons';
 
 import { formatDate } from '../utils/utility';
 
 class PCPost extends Component {
+
+    state = {
+        liked: false
+    }
 
     handleClick(event) {
 
@@ -25,6 +38,24 @@ class PCPost extends Component {
                 toHome
             }
         });
+    }
+
+    handleToggleLikeButton(event) {
+
+        event.preventDefault();
+
+        this.setState((prevState) => {
+            return {
+                liked: !prevState.liked
+            };
+        });
+    }
+
+    determineLikeButtonIcon() {
+
+        const { liked } = this.state;
+
+        return liked? <Favorite /> : <FavoriteBorder />;
     }
 
     render() {
@@ -51,12 +82,36 @@ class PCPost extends Component {
                         </Typography>
                     </CardContent>
                     <CardActions>
-                        <Button 
-                            size="small"
-                            onClick={this.handleClick.bind(this)}
+                        <Grid 
+                            justify="space-between"
+                            container
                         >
-                            Learn More 
-                        </Button>
+                            <Grid item>
+                                <Tooltip title="View post details">
+                                    <Button 
+                                        size="small"
+                                        onClick={this.handleClick.bind(this)}
+                                    >
+                                        Learn More 
+                                    </Button>
+                                </Tooltip>
+                            </Grid>
+                            <Grid>
+                                <Tooltip title="Edit">
+                                    <IconButton>
+                                        <Edit />
+                                    </IconButton>
+                                </Tooltip>
+                                <Tooltip title="Delete">
+                                    <IconButton>
+                                        <Delete />
+                                    </IconButton>
+                                </Tooltip>
+                                <IconButton onClick={this.handleToggleLikeButton.bind(this)}>
+                                    {this.determineLikeButtonIcon()}
+                                </IconButton>
+                            </Grid>
+                        </Grid>
                     </CardActions>
                 </Card>
             </div>

@@ -132,7 +132,7 @@ class PPost extends Component {
         }
 
         if (!postIds.includes(post.id)) {
-            return <Redirect to="/post/not/found" />
+            return <Redirect to="/" />
         }
 
         return (

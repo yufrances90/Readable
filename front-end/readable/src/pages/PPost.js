@@ -49,19 +49,19 @@ class PPost extends Component {
     componentDidMount() {
 
         const { 
-            location, 
             postIds,
-            handleReceiveData 
+            handleReceiveData,
+            match 
         } = this.props;
 
-        const { postId } = location.state;
+        const { post_id } = match.params;
 
         if (postIds.length === 0) {
             handleReceiveData();
         }
 
-        this.props.handleGetPost(postId);
-        this.props.handleGetCommentsByPostId(postId);
+        this.props.handleGetPost(post_id);
+        this.props.handleGetCommentsByPostId(post_id);
     }
 
     handleUpdatePostByID(event, postId, title, body) {
